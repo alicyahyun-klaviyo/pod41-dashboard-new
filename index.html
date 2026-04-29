@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pod 41 · Questions Dashboard</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    font-size: 14px;
+    min-height: 100vh;
+  }
+  header {
+    background: #fff;
+    border-bottom: 1px solid #e5e5ea;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 10px; }
+  .channel-badge {
+    background: #4A154B;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  header h1 { font-size: 16px; font-weight: 700; color: #1d1d1f; }
+  .last-updated { font-size: 11px; color: #8e8e93; margin-top: 2px; }
+  .main { padding: 20px; }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #e5e5ea;
+  }
+  .stat-card .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #8e8e93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .stat-card .stat-value {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    color: #1d1d1f;
+  }
+  .stat-card.purple .stat-value { color: #4A154B; }
+  .stat-card.green  .stat-value { color: #34c759; }
+  .stat-card.orange .stat-value { color: #ff9500; }
+  .stat-card.blue   .stat-value { color: #007aff; }
+  .filter-bar {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .search-wrap { position: relative; flex: 1; min-width: 180px; }
+  .search-wrap input {
+    width: 100%;
+    border: 1px solid #d1d1d6;
+    border-radius: 8px;
+    padding: 7px 10px 7px 30px;
+    font-size: 13px;
+    color: #1d1d1f;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-wrap input:focus { border-color: #4A154B; }
+  .search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: #8e8e93; font-size: 13px; }
+  .filter-select {
+    border: 1px solid #d1d1d6;
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #1d1d1f;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+    min-width: 140px;
+  }
+  .filter-select:focus { border-color: #4A154B; }
+  .filter-count { font-size: 12px; color: #8e8e93; white-space: nowrap; }
+  .table-wrap {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: #f5f5f7; border-bottom: 1px solid #e5e5ea; }
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8e8e93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  th:hover { color: #4A154B; }
+  th.sorted .sort-icon { color: #4A154B; }
+  tbody tr { border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.1s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #faf5fb; }
+  tbody tr.expanded-row { background: #faf5fb; }
+  td { padding: 11px 14px; vertical-align: top; }
+  .td-date { color: #8e8e93; font-size: 12px; white-space: nowrap; }
+  .td-requester { font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .td-ka { font-family: "SF Mono", "Fira Code", monospace; font-size: 12px; color: #4A154B; white-space: nowrap; }
+  .td-summary { font-size: 13px; color: #3a3a3c; max-width: 320px; line-height: 1.4; }
+  .td-summary-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .ticket-link { color: #4A154B; text-decoration: none; font-size: 12px; font-weight: 500; }
+  .ticket-link:hover { text-decoration: underline; }
+  .area-tag {
+    display: inline-block;
+    background: #f0e8f1;
+    color: #4A154B;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 500;
+    max-width: 180px;
+    word-break: break-word;
+  }
+  /* Expand */
+  .expand-row td { padding: 0; background: #fdf8fe; border-bottom: 2px solid #e5d6e8; }
+  .expand-content {
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .expand-section h4 {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #4A154B;
+    margin-bottom: 5px;
+  }
+  .expand-section p { font-size: 13px; color: #3a3a3c; line-height: 1.5; }
+  .expand-section p + p { margin-top: 3px; }
+  .expand-section ul { padding-left: 16px; }
+  .expand-section li { font-size: 13px; color: #3a3a3c; line-height: 1.5; margin-bottom: 2px; }
+  .expand-full { grid-column: 1 / -1; }
+  .empty-state { text-align: center; padding: 40px; color: #8e8e93; font-size: 13px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <span class="channel-badge">#support-pod-41-ctrl-alt-elite</span>
+    <div>
+      <h1>Questions Dashboard</h1>
+      <div class="last-updated" id="lastUpdated">Jan 2026 – Apr 2026 · 47 questions</div>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+  <div class="stats-row">
+    <div class="stat-card purple"><div class="stat-label">Total Questions</div><div class="stat-value" id="statTotal">–</div></div>
+    <div class="stat-card blue"><div class="stat-label">Product Areas</div><div class="stat-value" id="statAreas">–</div></div>
+    <div class="stat-card green"><div class="stat-label">Ash Arraiza</div><div class="stat-value" id="statAsh">–</div></div>
+    <div class="stat-card orange"><div class="stat-label">Chris Yinfoo</div><div class="stat-value" id="statChris">–</div></div>
+    <div class="stat-card" style="border-color:#e5e5ea"><div class="stat-label">Meher Gambhir</div><div class="stat-value" id="statMeher" style="color:#af52de">–</div></div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search issue, product area, KA, requester…" oninput="renderTable()">
+    </div>
+    <select class="filter-select" id="requesterFilter" onchange="renderTable()">
+      <option value="">All Requesters</option>
+    </select>
+    <select class="filter-select" id="areaFilter" onchange="renderTable()">
+      <option value="">All Product Areas</option>
+    </select>
+    <select class="filter-select" id="monthFilter" onchange="renderTable()">
+      <option value="">All Months</option>
+    </select>
+    <span class="filter-count" id="filterCount"></span>
+  </div>
+
+  <div class="table-wrap" id="tableContainer"></div>
+</div>
+
+<script>
+const QUESTIONS = [{"date": "2026-04-29", "requester": "Chris Yinfoo", "ka": "LWjHvK", "area": "Segment Growth / Large Dropped", "summary": "The customer noticed a large drop in their segment growth which was out of the norm from their observations", "tried": ["Checked some some profiles from the 24th April and interestingly they are 'Never Subscribed' status", "The first criteria is can receive email marketing because 'Subscribed'", "Cannot see any segment definition changes", "Customer is not aware of any API or external applications which could be make changes", "Not seeing any dev logs for the profiles", "Examples appear to have a subscribed to email marketing event that took place a long time ago"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3930031", "replies": 9, "has_files": true}, {"date": "2026-04-24", "requester": "Ash Arraiza", "ka": "RfkAhB", "area": "Campaigns - Link Activity (possible related bug?)", "summary": "\u2022 Link activity is not showing added params.  \u2022 Links are being merged as 1 main link that does not contain UTMs or additional params.", "tried": ["Cloned the campaign and verified the issue.", "See screenshots.", "Confirmed each link leads to a page on their website.", "Found possible related bug CAMP-49 - Campaign Link Activity showing multiple pages for same URL, however it doesn't appear to be the same circumstance/situation where the same link routes to different pages.", "Basically want to clarify if this is expected behaviour or whether to send this to BL."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3927296", "replies": 7, "has_files": true}, {"date": "2026-04-24", "requester": "Ash Arraiza", "ka": "SchJmc", "area": "M2 - Hotlinking", "summary": "Looking for a sanity check on a Cloudflare WAF configuration (*hotlinking*) before sending to a customer. I sent him the steps to from the IKB to make Klaviyo's domain exempt, however they've pushed back since the last time they did this it blocked all visitors from their site.  This is what they ha", "tried": ["I was gonna get them to update the rule to a positive match + Skip action:", "*Expression:*`http.referer contains \"klaviyo\"`", "*Action:* Skip --> Scrape Shield (Hotlink Protection)", "*Questions:*", "1. Is `http.referer contains \"klaviyo\"` --> Skip --> Scrape Shield the correct WAF Custom Rule setup for exempting Klaviyo from hotlink protection?", "2. Or is the better path to add the exemption directly in Scrape Shield --> Hotlink Protection settings rather than via WAF Custom Rules?", "is this like, not our jurisdiction anymore? haha - ty fam :yikes_harold:"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3924802", "replies": 4, "has_files": false}, {"date": "2026-04-21", "requester": "Ash Arraiza", "ka": "Je8TME", "area": "Show/Hide", "summary": "\u2022 Logic is correct :suscat:  but block stays hidden even if condition is true. \u2022 Property is `$loop_active_subscriber` and they want to show the \"It's Back\" block if the value is true", "tried": ["Used segment to confirm data type is Boolean", "Used the following code:", "```person|lookup:'$loop_active_subscriber' == 1 or person|lookup:'$loop_active_subscriber' == 'true' or person|lookup:'$loop_active_subscriber' == 'True'```", "Which was copied straight from this HC:", "Used one condition at a time, block is still hidden."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3920198", "replies": 14, "has_files": true}, {"date": "2026-04-20", "requester": "Chris Yinfoo", "ka": "RxSiLW", "area": "Dynamic Content", "summary": "The customer is using dynamic tags to have the percentage discount display  However, it looks like the base price is pulling in the first item's compare at price rather than the correct variant  This results in a negative discount off", "tried": ["It looks like the current formula is always pulling in the lowest ml compare at price rather than the actual product compare at price", "In this case, it will result in a negative discount, however if the lowest ml is actually chosen then the discount is correct (Navigate through preview examples to see the difference)", "We have advise that \"It would be ideal if the Skio event was able to pass the compare at price.\"", "Customer says they have asked but it's low priority on Skio end"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3914014", "replies": 10, "has_files": true}, {"date": "2026-04-20", "requester": "Chris Yinfoo", "ka": "XNZdR9", "area": "Email Dynamic Content", "summary": "The custom has a Fulfilled Order flow email, where they would like for the dynamic content to display in a 'collage' layout rather than the traditional a single column table (Image LHS and Text RHS)", "tried": ["The previous agent used the HTML block to produce what looks to be the customers want", "However, when you send the email as a preview, no images are actually retained", "Tried to update the code to get it to work however no joy so far", "Need to confirm if what they customer wants can be achieved?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3912407", "replies": 9, "has_files": true}, {"date": "2026-04-20", "requester": "Ash Arraiza", "ka": "QPH4G3", "area": "Sign Up Forms", "summary": "\u2022 Sign up form adding profiles to the incorrect list.", "tried": ["tested the form myself and could not replicate issue", "Compared the Form versions with my test accounts and the profile example, same form version ID", "confirmed form was last published live on 17 April", "Confirmed form is adding to correct lists after confirming opt-in and buttons on the form are submitting to the correct lists", "checked the incorrect list's forms and do not see the sign up form (form and incorrect list are not connected)", "Customer advised that the form was cloned from an old sign up form, however they changed the \"Submit to\" lists _before_ publishing live"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3917839", "replies": 30, "has_files": false}, {"date": "2026-04-15", "requester": "Meher Gambhir", "ka": "LtZARu", "area": "API call showing error in response", "summary": "The issue is that the data-privacy-deletion-jobs endpoint only works with a private Klaviyo API key, but the actual requests are still being sent with OAuth Bearer authentication, so they keep getting a 401 authentication_failed error.", "tried": ["Asked them to use a private Klaviyo API key as they were not before", "Confirmed their new request used a private one", "Checked request against this guide (looks all good to me):"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3909623", "replies": 2, "has_files": true}, {"date": "2026-04-15", "requester": "Ash Arraiza", "ka": "V9XDbW", "area": "Integration - Prestashop v9.0.", "summary": "\u2022 Customer is encountering this error: \"It appears you are running PHP as a CGI. Please follow the instructions here to ensure Klaviyo can access your API\"", "tried": ["Used one time secret to test API calls in Postman - which returns 200 (see screenshot)", "Followed this guide: PrestaShop Integration Troubleshooting Guide - Could not authenticate/401 Unauthorized", "Did not see any auth issues in postman or staffside", "Looked through past tickets in ZD, and it appears that Prestashop version 9+ is not supported by Klaviyo module. However I'd like clarification on this before getting back to them with a firm answer since this HC article says otherwise.", "Example ZD tix - one, two", "My thinking is to get them to downgrade versions, but any further guidance here would be appreciated. ty x"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3904537", "replies": 13, "has_files": true}, {"date": "2026-04-10", "requester": "Meher Gambhir", "ka": "XdrVV8", "area": "Metric Triggered Flow", "summary": "Customer\u2019s Shopify Order Confirmation flow is mis-routing one profile based on order count. A profile with only one Placed Order event received the Loyal Customer order confirmation instead of the New Customer version, suggesting the order-count splits were evaluated incorrectly.", "tried": ["Confirmed with customer: other profiles have also received this email incorrectly, the email isn\u2019t duplicated in any other flow, and no one has resent it manually.", "Reviewed flow splits: is configured as expected.", "Used Flow Debugger: consent split evaluated True, but all three order-count splits evaluated False for this profile/event.", "Used Flow Change Log: no structural changes to this flow after the customer entered", "Verified via Recipient Activity + Messages tab that the Loyal Customer email was the one actually sent."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3899295", "replies": 7, "has_files": true}, {"date": "2026-04-10", "requester": "Meher Gambhir", "ka": "WV7nVS", "area": "Custom Font", "summary": "CX  is trying to update their existing custom font \u201cMongoose\u201d from Normal 400 to Medium 500 using but the Fonts UI shows: \u201cOne or more font files could not be accessed.*\u201d* The font URL is reachable and downloads fine, and their host has added CORS headers for Klaviyo,  not sure why our fetch is fail", "tried": ["Opened that exact URL in an incognito window and confirmed it downloads the file", "Customer\u2019s host added CORS headers include `Header always set Access-Control-Allow-Origin`", "Re-tested saving the font in the Klaviyo UI, still seeing \u201cOne or more font files could not be accessed.\u201d", "Looks like Klaviyo is still unable to read this font file, so looking for guidance on whether this is expected behaviour, a limitation with this hosting setup, or something we should flag as a bug."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3901722", "replies": 6, "has_files": true}, {"date": "2026-04-08", "requester": "Ash Arraiza", "ka": "YfrvQB", "area": "metric-triggered flow", "summary": "\u2022 Customer is receiving emails 30 mins after triggering the flow. \u2022 There are no time delay blocks or filters in the flow.  \u2022 Re-entry criteria set to trigger every time the person triggers the metric", "tried": ["Checked dev logs for when the metric was triggered and did not see any difference in time.", "Checked the events on the profile and see no delays when checking against flow debugger"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3897045", "replies": 20, "has_files": false}, {"date": "2026-04-01", "requester": "Ash Arraiza", "ka": "U5vf4r", "area": "WooCommerce Historical Sync failure", "summary": "\u2022 Running into timeout/server unavailable (10x, 503) for historical syncs", "tried": ["Observed the following information in Staffside:", "Timestamp: March 24, 2026 at 10:09 a.m.", "Issue Type: Timeout/Server Unavailable (10x, 503)", "Description: A socket error has occurred.", "Origin: Historical Sync", "Had customer whitelist IPs and user agent.", "Customer provided third-party plugins,", "No Ray ID seen in the logs", "Tried reducing the `order_batch_size` however still receiving the error", "Claude says I should increase the `connection_timeout` via integration inspector and then re-trigger the historical sync. Just wanted to check here before doing so, since I know historical syncs can cause larger issues.", "thanks team"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3858575", "replies": 6, "has_files": true}, {"date": "2026-03-30", "requester": "Ash Arraiza", "ka": "SQ8M3K", "area": "Shopify Markets with Product Feeds", "summary": "Price of products within a static product block are not showing the correct compare at price when viewing as an Australian profile", "tried": ["Customer is using Compare at Price and Localize for recipient in this template.", "Verified account is based in NZ", "Initially I thought that the price was due to the price difference between AUD and NZD, however the price of Best Seller Bundle is *higher* than the Full Outfit Rescue Kit, which is *lower* than the account default.", "Checked the compare at price for the products, and noticed `compare_at_price` is not available on all products. The products with null `compare_at_price` has a higher price (), where as the products with the `compare_at_price` has a lower price in the template ().", "Just wondering how would they fix this issue so that the prices are consistently higher or lower in relation to the customer's locale?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3880560", "replies": 4, "has_files": false}, {"date": "2026-03-26", "requester": "Ash Arraiza", "ka": "HyAu3m", "area": "Shopify Metric - Confirmed Shipment", "summary": "\u2022 Confirmed Shipment is not firing since 18 March 2026.", "tried": ["Confirmed the carriers the customer is using are supported (UPS)", "Reviewed this IKB, where it states `Shopify Confirmed Shipment metric may not always track. The Confirmed Shipment metric is logged when a fulfillments shipment_status is marked as confirmed. From Shopify this value is logged when \"The carrier is aware of the shipment, but hasn't received it yet.\" So it will not always track in cases where Shopify gets information from the carrier to mark the fulfillment status as fulfilled.`", "However, it appears this is for intermittently not tracking, rather than not tracking altogether.", "Checked health of the integration in SS, and it all appears healthy.", "Customer has reached out to Shopify, and they have advised her that Shopify is successfully sending webhooks to Klaviyo's endpoint. So the issue is isolated to Klaviyo.", "Checked this profile (who did *not* trigger confirmed shipment), and identified that the Fulfilled Order fulfilment status is fulfilled. They were also using a supported carrier. So the metric should have fired after.", "I understand it is expected that it may not fire all the time, however I don't believe it is expected that the metric would not fire at all.", "Just need help with next steps. Thank you :sadcat:"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3874537", "replies": 5, "has_files": true}, {"date": "2026-03-26", "requester": "Chris Yinfoo", "ka": "VvedfF", "area": "Sign Up Form / API Call", "summary": "Profile is not added to list when signing up via form  The form uses this endpoint", "tried": ["Ran a test and can see dev log but no addition to list or record of my profile in account", "2026-03-26 3:17PM (2026-03-26 04:17+0000) is the last one we could see that was successful", "Compared successful profile import to my test and the payload appears to be the same", "The only difference is the successful record does have another call however the /client/subscriptions should work by itself?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3874469", "replies": 5, "has_files": true}, {"date": "2026-03-25", "requester": "Chris Yinfoo", "ka": "RUiQ9N", "area": "Custom Catalog, Product Feed", "summary": "The customer is finding their product feed images showing up as broken when email received", "tried": ["I asked the customer to send an actual campaign to my test email", "Can see the broken images, not due to being in spam", "Checked their custom catalog feed image links and they do load", "Did request edit access but I should have advised my timezone as they only had it to their end of day, so now back to read only", "Anything else to check before asking for edit mode once again?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3862278", "replies": 3, "has_files": true}, {"date": "2026-03-25", "requester": "Chris Yinfoo", "ka": "RkbhGi", "area": "SFTP Import Error Report", "summary": "The customer is trying to understand the error report further, for the rows showing 'Email address is invalid (Email)', which do not have an email address in the row)", "tried": ["For the rows which do not have an email address, it does have a PhoneNumber is tied to the profile", "An email address doesn't need to be in the email row as long as they have unique phone number?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3862477", "replies": 10, "has_files": true}, {"date": "2026-03-25", "requester": "Chris Yinfoo", "ka": "SchJmc", "area": "Magento 2 Catalog Images", "summary": "Catalog items not displaying image", "tried": ["Following the details here -", "Step 4 mentions \"Right click on the invalid image and select \u201cCopy Image Address\u201d, you can then paste this in a new tab to view which url we have saved.\" however in the first screenshot I'm not seeing 'Copy Image Address'", "When inspecting the item in SS I can see a file address, which does look similar to that in the actual web address, however noticed the web address has extra details on the images dimensions", "Don't think that is the issue directly?", "Would like to check which steps to proceed further with, thanks!"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3871892", "replies": 3, "has_files": true}, {"date": "2026-03-25", "requester": "Ash Arraiza", "ka": "U8hAjh", "area": "Back in Stock template", "summary": "\u2022 Customer wants to reference Variant ID on back in stock template \u2022 Using catalog lookup tag (ProductID currently to pull product info) \u2022 Using Product ID pulls wrong product information.", "tried": ["Tried using an if-else statement instead", "Tried using metadata_lookup:VariantID to pull info", "Used ProductID but changed to VariantName, which works for the product name, but not the variant image or URL.", "Reviewed", "Reviewed", "Are we only able to reference Product ID for catalog lookup and not Variant ID? TY in advance :heart:"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3858826", "replies": 10, "has_files": false}, {"date": "2026-03-24", "requester": "Chris Yinfoo", "ka": "XDpRex", "area": "MailChimp Import", "summary": "The customer had some initial issues with the MailChimp integration and some advice has been given to assist with the remainder of the sync", "tried": ["We can disregard the WooComm details as that should be dealt with", "Read through the previous chats information and I see a lot of reference to manual import, so just want to confirm what exactly the customer is referring to \"Can you run the sync as described in your strategy via the integration?\"", "Are we in the best position to help given all the context discussed so far?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3857275", "replies": 10, "has_files": true}, {"date": "2026-03-24", "requester": "Chris Yinfoo", "ka": "KGEEZx", "area": "Segment Growth (Dropped figure)", "summary": "The customer is trying to wrap their head around the larger than expected dropped figure for the 23rd March 2026", "tried": ["Customer says that they have not made any recent changes to the segment", "When looking at profile examples we can see a mix of 'Unsubscribed' and 'Never Subscribed'", "However, 'Never Subscribed' seems odd given that the segment looks for 'Subscribed' to know they first appeared in the segment", "An example with 'Unsubscribed' as a date of 2025"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3869515", "replies": 12, "has_files": true}, {"date": "2026-03-23", "requester": "Chris Yinfoo", "ka": "XZMsJ7", "area": "SFCC ecommerce", "summary": "The customer is running into the SFCC ```\"type\": \"AuthorizationHeaderMissingException\"```", "tried": ["Looks like the previous agent has followed the steps here -", "They mentioned they tried to apply the same as had been done previously here 3164074", "Customer says it is still not working", "Would it be best to send to SE next?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3821881", "replies": 2, "has_files": true}, {"date": "2026-03-23", "requester": "Chris Yinfoo", "ka": "WN3FG6", "area": "Flow webhook bulk suppress", "summary": "The customer is wondering why the webhook was not actioned as the profile is still Subscribed", "tried": ["Couldn't see an API call in the dev logs, so this () suggests it could be the authorization key", "Anything else to check before we ask the customer if verify the details?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3864157", "replies": 24, "has_files": true}, {"date": "2026-03-23", "requester": "Ash Arraiza", "ka": "LYUQy2", "area": "Shopify - Email Subscription Status", "summary": "Shopify is resubscribing profiles immediately after unsubscribing.", "tried": ["Replicated issue on test profile", "Checked the info syncing to shopify has Email Subscription Status enabled while doing the test.", "Checked Dev logs, no calls made for updating subscription status", "After entering email on login page (third party form), observed my profile was resubscribed.", "Unsure if this is still a Klaviyo issue and whether to refer them back to shopify atp", "thank you for the help team"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3863166", "replies": 24, "has_files": true}, {"date": "2026-03-17", "requester": "Meher Gambhir", "ka": "VsAJ3M", "area": "Landing Pages Font Size issue", "summary": "Landing page subscribe button + input text on mobile look much smaller than the configured font size. On the same device, a 16px button on a popup form looks noticeably larger/clearer, so this seems specific to landing pages rather than the customer\u2019s base styling.", "tried": ["Confirmed the landing page on device matches the Klaviyo builder\u2019s mobile preview.", "Compared against their popup form (16px button) which looks correct on mobile.", "I don\u2019t see any issues in the Klaviyo builder preview, and since this is a hosted landing page (not embedded on their own site), this looks more like a Landing Pages font\u2011rendering issue than a custom CSS conflict on their site.", "Similar bug found:"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3854114", "replies": 9, "has_files": true}, {"date": "2026-03-17", "requester": "Chris Yinfoo", "ka": "UYbNUu", "area": "Campaign Translation - Profile Email Preview", "summary": "The customer has translation enabled and for the below example FR, when checking the profile message sent preview, it appears in English  They want to confirm is that is accurate as they expected to see French as the mapped custom field", "tried": ["I'm thinking we would expect the French to appear for them unless there is a specific reason it is not?", "We have other examples to review, let me know if required"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3814046", "replies": 9, "has_files": true}, {"date": "2026-03-11", "requester": "Ash Arraiza", "ka": "YsdWeh", "area": "Templates - Dynamic Content", "summary": "\u2022 Images are not showing in preview. Using Catalog Lookup Tag.", "tried": ["Used {% catalog event.ProductID %}{{ catalog_item.featured_image.thumbnail.src|default:catalog_item.featured_image.full.src }}{% endcatalog %} -- and ensured it works in test account. Does not work for cx", "Also used VariantID", "Ensured images appear for products in their catalog", "Ensured images are not too big (less than 10MB)", "Example product -", "reviewed IKB", "Reviewed HC", "Checked integration, cx is using custom integration."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3838412", "replies": 17, "has_files": false}, {"date": "2026-03-10", "requester": "Ash Arraiza", "ka": "ercYiL", "area": "Coupon (unique) in flow", "summary": "Message is being skipped due to Unable to Create Coupon", "tried": ["Previewed Plain text email and did not identify any other coupons.", "Used console identify any other coupons, did not see any", "followed IKB and this HC for coupon links", "Reviewed the coupon, and did not see any issues with how this coupon has been set up to prevent this email from sending."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3835228", "replies": 14, "has_files": true}, {"date": "2026-03-10", "requester": "Meher Gambhir", "ka": "UFgCrg", "area": "Custom Object Error", "summary": "CX cannot move past the first step of the Custom Objects \u201cCreate object\u201d wizard. After we enter the Name and Data source and click Next, nothing happens in the UI. In the browser console we see repeated POST 400 (Bad Request) errors, and the response says: 'private' is not a valid choice for 'visibi", "tried": ["I confirmed with the customer that they are only creating the object in the Klaviyo UI and are not using the Custom Objects API or any custom integration.", "I reproduced the issue in their account with edit access by going to Content \u2192 Objects \u2192 Build your own \u2192 Create object.", "I set Name to \u201ctickets_test\u201d, chose \u201cCreate new data source\u201d, set Name of data source to \u201ctickets_test\u201d, left the description blank, and clicked Next.", "The UI did not move to the next step where you define fields.", "In DevTools I saw repeated POST  https://www.klaviyo.com/ux-api/data-sources 400 (Bad Request) errors each time I clicked Next, and the response body said \u201c'private' is not a valid choice for 'visibility'.\u201d", "I also tried simple browser checks (with and without a description, repeating the same steps) and the behavior was the same, so this appears to be a product issue rather than something misconfigured by the customer."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3834786", "replies": 5, "has_files": true}, {"date": "2026-03-10", "requester": "Chris Yinfoo", "ka": "WVruKa", "area": "Flow Monitor Alert", "summary": "The amount of emails being sent from flow has dropped since the 28th of Feb, customer at loss as to what's causing this slowdown in traffic  \"I also saw the \"failed additional filters\" but, there were no changes to the flow that would have precipitated this kind of reduction on or even around Feb 28", "tried": ["No recent changes to the flow history", "Checkout Started, Placed Order looks consistent", "Provided information on potential skipped email increase"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3829647", "replies": 11, "has_files": true}, {"date": "2026-03-06", "requester": "Meher Gambhir", "ka": "QVMdnX", "area": "Cloning Campaign Showing Error", "summary": "Customer gets a 400 error when trying to clone a specific campaign in the same account. The clone screen sometimes shows details from a different account, so it looks like the campaign/clone is corrupted, not a permissions or browser issue.", "tried": ["Previous PE has;", "Cloned successfully on my end, but unable to clone into a different account", "Had the customer attempt from an incognito window and in a seperate browser. They had no success", "I have also:", "Checked internal bug BUGPORT-12940 (400 error when cloning omnichannel campaigns if the Description is blank) and noted this looks related."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3823710", "replies": 5, "has_files": true}, {"date": "2026-02-27", "requester": "Meher Gambhir", "ka": "TVxaL7", "area": "Flows / Helpdesk (Ticket Created trigger + Internal alerts)", "summary": "This customer uses Helpdesk + flows to send internal Sales notifications when high\u2011value customers (e.g. Shopify tag `RKardashian`) open a ticket. These notifications go to colleagues outside Klaviyo so they can act from their inbox, not from Helpdesk. Expected: Each internal email should show a cle", "tried": ["Cloned the customer\u2019s live Sales notification flow into KL TEST so I can edit safely.", "Updated the \"Internal alert body\" to a structured summary (customer name, email, ticket subject, and a short message snippet), using:", "```Message:", "{{ event.description | strip_html | truncate: 300 }}```", "Tested in multiple browsers (normal + incognito).", "In all cases, when I click *Save* on the Internal alert, I get *\u201cNetwork Error \u2013 Request failed with status code 500\u201d* and the changes to the content *are not saved*."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3780453", "replies": 7, "has_files": true}, {"date": "2026-02-26", "requester": "Meher Gambhir", "ka": "VwwAGD", "area": "Deleted Segment", "summary": "Customer reports that segment \"*Bounced during Black Friday & Never Recieved\" (ID UqnkJi) has disappeared and states that no one on their team deleted it. The segment was used as an exclusion in several campaigns on Dec 1\u20132, 2025 (screenshots attached), and the customer says one of their employees c", "tried": ["Searched Lists & segments in Lucent Globe (VwwAGD) for `*Bounced during Black Friday & Never Recieved` \u2013 no results, and there is no Deleted view in the UI.", "Opened the Restore Deleted Groups staff tool for VwwAGD \u2013 no deleted groups shown in the last 90 days.", "Checked a backend view \u2013 segment ID `UqnkJi` with name `*Bounced during Black Friday & Never Recieved` exists and is marked Inactive, with created at 30 Oct 2025 and deleted at 5 Nov 2025.", "Verified in the Audience step of multiple campaigns (Dec 1\u20132, 2025) that this segment was used in Excluded lists and segments within the last 90 days."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3788822", "replies": 8, "has_files": true}, {"date": "2026-02-24", "requester": "Ash Arraiza", "ka": "TdFebw", "area": "Accounts", "summary": "\u2022 Customer is stuck in a loop where the page continuously asks to login to continue after session expiration.", "tried": ["got customer to clear cache and erase cookies :cookie:", "no login errors appearing on the back end and your account is not disabled/suspended", "Using a current Chrome Version 145.0.7632.46 and macOS Monterey 12.7.6", "confirmed doesn't log in from any other device or share accounts with anyone"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3749831", "replies": 17, "has_files": false}, {"date": "2026-02-23", "requester": "Meher Gambhir", "ka": "V97Ddi", "area": "AU Branded Sender ID registration", "summary": "Customer (shopcowgirlcrush.com) is trying to complete AU branded sender ID registration. From Settings \u2192 Text messages \u2192 Sender information \u2192 Australia \u2192 Finish registering, after submitting the form they are redirected to a Google Forms page showing \u201cSomething went wrong. Please try again.\"  This h", "tried": ["Confirmed AU branded sender ID is Incomplete under Settings, Sender information.", "Guided customer to Australia \u2192 Resolve \u2192 Finish registering and asked them to resubmit. Still shows \"something went wrong\" page.", "Confirmed they tried multiple Chrome logins on both laptop and phone (same Google \u201cSomething went wrong\u201d page each time).", "Asked them to verify https:// website URL and required fields/phone formats, and to retry on a different network/device.", "Reviewed HC \u201cUnderstanding SMS sending numbers\u201d and IKB \u201cTroubleshooting and FAQ: SMS\u201d to confirm AU branded sender ID registration via this Google Form and found no additional frontline fixes for this error."], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3777579", "replies": 17, "has_files": true}, {"date": "2026-02-17", "requester": "Ash Arraiza", "ka": "Swtn9V", "area": "TFN Rejection", "summary": "\u2022 Customer has a paraphernalia (weed) store and is being rejected for US and Canadian TFN.  \u2022 Unsure which team to send to Compliance, D&C or SMS Activations.", "tried": ["Followed IKB but unclear which team this needs to go to, would like to clarify before potentially escalating. :ty_thankyou:"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3765499", "replies": 4, "has_files": true}, {"date": "2026-02-17", "requester": "Chris Yinfoo", "ka": "P47R2f", "area": "Price drop flow / WooCommerce -> Shopify Change", "summary": "The customer has recently updated their ecomm store from Woo to Shopify  They have a price drop flow which has been cloned from the original one and they would to ensure it references Shopify products only (Does not look like the flow has been live)", "tried": ["Clicking on the Price drop report link, we can still see the woo products", "Tried updating timeframe to 20, save, 21, save to see if that changed anything in the report but they are still present", "Currently Woo is disabled as of 17th Feb and Shopify active", "What else needs to happen / how can we confirm it will for sure reference Shopify going forward?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3764988", "replies": 12, "has_files": true}, {"date": "2026-02-13", "requester": "Ash Arraiza", "ka": "UksXRm", "area": "Campaign (omni)", "summary": "\u2022 Cx cannot clone campaign to another account (from AU to NZ accounts)", "tried": ["Confirmed customer is an Admin on both accounts", "Cleared cache and tried in incognito", "page gets to the loading screen then stays frozen for 1+ hours", "tried adding a list into the recipients with and without a profile", "cloned the campaign for the customer to try cloning, issue persits"], "ticket_url": "", "replies": 2, "has_files": true}, {"date": "2026-02-11", "requester": "Chris Yinfoo", "ka": "UxmzeY", "area": "Woocommerce historical sync", "summary": "Historical sync appears stalled at 98%", "tried": ["When they initially reached out, noticed a 500 error and supplied them with information", "Looks to have progressed but now close to 98%", "I can see a failed historical sync with one retry", "Will re-queue again make a difference?", "Anything else to check / let them know about"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3734262", "replies": 15, "has_files": false}, {"date": "2026-02-09", "requester": "Chris Yinfoo", "ka": "TVPP9H", "area": "Predictive analytics (Customer Lifetime Value)", "summary": "The customer believes they meet the criteria for CLV however they notice the message when looking into a profile", "tried": ["Predictive Analytics -", "Checked through the criteria to see if they meet them, which looks to be the case?", "Anything which might have potentially missed for this?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3736907", "replies": 9, "has_files": true}, {"date": "2026-02-04", "requester": "Chris Yinfoo", "ka": "MBqXVi", "area": "SMS Usage Reporting", "summary": "The customer would like the figures for the below graph but for the period January - Dec 2025  The current view only does last 12 months", "tried": ["Checked out the above IKB but I'm not sure that is quite right?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3720575", "replies": 8, "has_files": true}, {"date": "2026-01-27", "requester": "Chris Yinfoo", "ka": "VGeZHB", "area": "API Request / Blocked IP", "summary": "The exact same request works from my laptop via curl (HTTP 201 Created), but it fails from n8n Cloud with a Cloudflare block page (\u201cSorry, you have been blocked / unable to access klaviyo.com\u201d). Cloudflare details from the blocked response:  Blocked IP shown on page: 20.79.32.39  Cloudflare Ray ID: ", "tried": ["Asked for more information about the API call they are making and they have provided that detail on what is being blocked (Please see case details)", "Is this usual for IP to be blocked and anything we can do for this?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3688264", "replies": 5, "has_files": false}, {"date": "2026-01-27", "requester": "Chris Yinfoo", "ka": "Wqcbfr", "area": "Back In Stock Flow / Custom Catalog", "summary": "The customer updated their inventory for an item and wondering why the BIS report still says queued for some products with the same name", "tried": ["Looked through some examples in the BIS Report and looking at the SKU ID, noticed it is different from the Shopify ID", "Found that they have a custom catalog syns as well, asked the customer if they are aware of this / who might have set it up (as it is currently sycning as well)", "They responded with \"No? I have no idea why we'd have a custom catalog also\" \"Can we disconnect the API catalog? What is the point of an API catalog?\""], "ticket_url": "", "replies": 24, "has_files": true}, {"date": "2026-01-27", "requester": "Chris Yinfoo", "ka": "X6M5Pn", "area": "Customer Catalog / Product Feed / Magento", "summary": "\u2022 Localised product feed links", "tried": ["A lot of back and forth already, need advice on next best approach"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3642269", "replies": 16, "has_files": false}, {"date": "2026-01-22", "requester": "Chris Yinfoo", "ka": "sqUwG2", "area": "Klaviyo app embed remains off as displayed in Klaviyo", "summary": "The customer's Shopify Onsite Tracking says it's 'Turned Off', however they see a message in Shopify to advise it's Activated", "tried": ["When using 'Get App Embed Metafields', can see if it actually false", "Can see instructions to \"Reset App Embed Metafields\" here, would this be suitable and then ask them to go through the steps again?"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3659792", "replies": 2, "has_files": true}, {"date": "2026-01-22", "requester": "Chris Yinfoo", "ka": "3670894", "area": "Custom website / API / Coupons", "summary": "We have an API between our custom website solution and Klaviyo. With our website when we build out discount codes they all have the same expiry date. For our new sunset flow we need codes that upload to the API to be evergreen and have time periods that are not all the same.  Can Klaviyo speak to ou", "tried": ["Still trying to wrap my head around their situation"], "ticket_url": "https://klaviyo.zendesk.com/agent/tickets/3670894", "replies": 15, "has_files": false}];
+
+let sortCol = 'date';
+let sortDir = 'desc';
+let expandedIdx = null;
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function fmtDate(s) {
+  const d = new Date(s + 'T00:00:00');
+  return d.toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function fmtMonth(s) {
+  const d = new Date(s + 'T00:00:00');
+  return d.toLocaleDateString('en-AU', { month: 'long', year: 'numeric' });
+}
+
+function buildFilters() {
+  const requesters = [...new Set(QUESTIONS.map(q => q.requester))].sort();
+  const areas = [...new Set(QUESTIONS.map(q => q.area))].sort();
+  const months = [...new Set(QUESTIONS.map(q => q.date.slice(0,7)))].sort().reverse();
+
+  const rSel = document.getElementById('requesterFilter');
+  rSel.innerHTML = '<option value="">All Requesters</option>' + requesters.map(r => `<option value="${esc(r)}">${esc(r)}</option>`).join('');
+
+  const aSel = document.getElementById('areaFilter');
+  aSel.innerHTML = '<option value="">All Product Areas</option>' + areas.map(a => `<option value="${esc(a)}">${esc(a)}</option>`).join('');
+
+  const mSel = document.getElementById('monthFilter');
+  mSel.innerHTML = '<option value="">All Months</option>' + months.map(m => {
+    const d = new Date(m + '-01T00:00:00');
+    const label = d.toLocaleDateString('en-AU', { month: 'long', year: 'numeric' });
+    return `<option value="${m}">${label}</option>`;
+  }).join('');
+}
+
+function updateStats() {
+  document.getElementById('statTotal').textContent = QUESTIONS.length;
+  document.getElementById('statAreas').textContent = new Set(QUESTIONS.map(q => q.area)).size;
+  document.getElementById('statAsh').textContent = QUESTIONS.filter(q => q.requester === 'Ash Arraiza').length;
+  document.getElementById('statChris').textContent = QUESTIONS.filter(q => q.requester === 'Chris Yinfoo').length;
+  document.getElementById('statMeher').textContent = QUESTIONS.filter(q => q.requester === 'Meher Gambhir').length;
+}
+
+function getFiltered() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const req = document.getElementById('requesterFilter').value;
+  const area = document.getElementById('areaFilter').value;
+  const month = document.getElementById('monthFilter').value;
+  return QUESTIONS.filter(q => {
+    if (req && q.requester !== req) return false;
+    if (area && q.area !== area) return false;
+    if (month && !q.date.startsWith(month)) return false;
+    if (search) {
+      const hay = [q.requester, q.area, q.summary, q.ka, ...q.tried].join(' ').toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+}
+
+function sortRows(rows) {
+  return [...rows].sort((a, b) => {
+    let va = a[sortCol], vb = b[sortCol];
+    if (va < vb) return sortDir === 'asc' ? -1 : 1;
+    if (va > vb) return sortDir === 'asc' ? 1 : -1;
+    return 0;
+  });
+}
+
+function handleSort(col) {
+  if (sortCol === col) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  else { sortCol = col; sortDir = 'desc'; }
+  renderTable();
+}
+
+function si(col) {
+  return sortCol === col ? (sortDir === 'asc' ? '↑' : '↓') : '<span style="opacity:0.35">↕</span>';
+}
+
+function renderTable() {
+  const filtered = sortRows(getFiltered());
+  document.getElementById('filterCount').textContent = `Showing ${filtered.length} of ${QUESTIONS.length}`;
+  const container = document.getElementById('tableContainer');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state">No questions match your filters.</div>';
+    return;
+  }
+
+  let html = `<table>
+    <thead><tr>
+      <th onclick="handleSort('date')" class="${sortCol==='date'?'sorted':''}">Date ${si('date')}</th>
+      <th onclick="handleSort('requester')" class="${sortCol==='requester'?'sorted':''}">Requester ${si('requester')}</th>
+      <th>KA</th>
+      <th onclick="handleSort('area')" class="${sortCol==='area'?'sorted':''}">Product Area ${si('area')}</th>
+      <th>Issue Summary</th>
+      <th>Ticket</th>
+    </tr></thead><tbody>`;
+
+  filtered.forEach(q => {
+    const origIdx = QUESTIONS.indexOf(q);
+    const isExp = expandedIdx === origIdx;
+
+    html += `<tr onclick="toggleExpand(${origIdx})" class="${isExp ? 'expanded-row' : ''}">
+      <td class="td-date">${fmtDate(q.date)}</td>
+      <td class="td-requester">${esc(q.requester)}</td>
+      <td class="td-ka">${esc(q.ka)}</td>
+      <td><span class="area-tag">${esc(q.area)}</span></td>
+      <td class="td-summary"><div class="td-summary-text">${esc(q.summary)}</div></td>
+      <td>${q.ticket_url ? `<a class="ticket-link" href="${esc(q.ticket_url)}" target="_blank" onclick="event.stopPropagation()">View ↗</a>` : '<span style="color:#c7c7cc;font-size:12px">–</span>'}</td>
+    </tr>`;
+
+    if (isExp) {
+      html += `<tr class="expand-row"><td colspan="6">
+        <div class="expand-content">
+          <div class="expand-section expand-full">
+            <h4>Issue Summary</h4>
+            <p>${esc(q.summary)}</p>
+          </div>
+          <div class="expand-section">
+            <h4>What Has Been Tried</h4>
+            ${q.tried.length > 0
+              ? '<ul>' + q.tried.map(t => `<li>${esc(t)}</li>`).join('') + '</ul>'
+              : '<p style="color:#c7c7cc">No steps recorded</p>'}
+          </div>
+          <div class="expand-section">
+            <h4>Details</h4>
+            <p><strong>KA:</strong> ${esc(q.ka)}</p>
+            <p><strong>Requester:</strong> ${esc(q.requester)}</p>
+            <p><strong>Date:</strong> ${fmtDate(q.date)}</p>
+            ${q.has_files ? '<p><strong>Attachments:</strong> ✓ Files attached</p>' : ''}
+            ${q.ticket_url ? `<p><strong>Ticket:</strong> <a class="ticket-link" href="${esc(q.ticket_url)}" target="_blank">Open in Zendesk ↗</a></p>` : ''}
+          </div>
+        </div>
+      </td></tr>`;
+    }
+  });
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+function toggleExpand(idx) {
+  expandedIdx = expandedIdx === idx ? null : idx;
+  renderTable();
+}
+
+buildFilters();
+updateStats();
+renderTable();
+</script>
+</body>
+</html>
