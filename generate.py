@@ -58,13 +58,13 @@ def parse_messages(raw_text):
         reply_m = re.search(r'Thread:\s*(\d+)\s*repl', body)
         ts_m = re.search(r'Message TS:\s*(\d+\.\d+)', body)
         ts = ts_m.group(1) if ts_m else ""
-        suggestions = SUGGESTIONS.get(ts, [])
+        suggestion_summary = SUGGESTIONS.get(ts, "")
         results.append({
             "date": date_clean, "requester": req_m.group(1), "ka": ka,
             "area": area, "summary": summary, "tried": tried,
             "ticket_url": ticket_url, "replies": int(reply_m.group(1)) if reply_m else 0,
             "has_files": bool(re.search(r'Files:', body)),
-            "suggestions": suggestions,
+            "suggestion_summary": suggestion_summary,
         })
     return results
 
@@ -146,7 +146,6 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .expand-section li { font-size: 13px; color: #3a3a3c; line-height: 1.5; margin-bottom: 4px; }
   .expand-full { grid-column: 1 / -1; }
   .empty-state { text-align: center; padding: 40px; color: #8e8e93; font-size: 13px; }
-  .suggestion-speaker { font-weight: 600; color: #4A154B; }
   .no-suggestions { color: #c7c7cc; font-size: 12px; font-style: italic; }
 </style>
 </head>
@@ -203,22 +202,16 @@ function getFiltered(){
     if(req&&q.requester!==req)return false;
     if(area&&q.area!==area)return false;
     if(month&&!q.date.startsWith(month))return false;
-    if(s){const hay=[q.requester,q.area,q.summary,q.ka,...q.tried,...(q.suggestions||[])].join(" ").toLowerCase();if(!hay.includes(s))return false;}
+    if(s){const hay=[q.requester,q.area,q.summary,q.ka,...q.tried,q.suggestion_summary||""].join(" ").toLowerCase();if(!hay.includes(s))return false;}
     return true;
   });
 }
 function sortRows(rows){return[...rows].sort((a,b)=>{let va=a[sortCol],vb=b[sortCol];if(va<vb)return sortDir==="asc"?-1:1;if(va>vb)return sortDir==="asc"?1:-1;return 0;});}
 function handleSort(col){if(sortCol===col)sortDir=sortDir==="asc"?"desc":"asc";else{sortCol=col;sortDir="desc";}renderTable();}
 function si(col){return sortCol===col?(sortDir==="asc"?"↑":"↓"):'<span style="opacity:0.35">↕</span>';}
-function renderSuggestions(suggestions){
-  if(!suggestions||!suggestions.length)return'<p class="no-suggestions">No suggestions recorded</p>';
-  return'<ul>'+suggestions.map(s=>{
-    const colon=s.indexOf(":");
-    if(colon===-1)return`<li>${esc(s)}</li>`;
-    const speaker=s.slice(0,colon);
-    const text=s.slice(colon+1).trim();
-    return`<li><span class="suggestion-speaker">${esc(speaker)}:</span> ${esc(text)}</li>`;
-  }).join("")+'</ul>';
+function renderSuggestions(s){
+  if(!s)return'<p class="no-suggestions">No summary available</p>';
+  return`<p>${esc(s)}</p>`;
 }
 function renderTable(){
   const filtered=sortRows(getFiltered());
@@ -232,8 +225,9 @@ function renderTable(){
     if(isExp)html+=`<tr class="expand-row"><td colspan="6"><div class="expand-content">`
       +`<div class="expand-section expand-full"><h4>Issue Summary</h4><p>${esc(q.summary)}</p></div>`
       +`<div class="expand-section"><h4>What Has Been Tried</h4>${q.tried.length?'<ul>'+q.tried.map(t=>`<li>${esc(t)}</li>`).join('')+'</ul>':'<p style="color:#c7c7cc">No steps recorded</p>'}</div>`
-      +`<div class="expand-section"><h4>What Was Suggested</h4>${renderSuggestions(q.suggestions)}</div>`
+      +`<div class="expand-section"><h4>What Was Suggested</h4>${renderSuggestions(q.suggestion_summary)}</div>`
       +`<div class="expand-section"><h4>Details</h4><p><strong>KA:</strong> ${esc(q.ka)}</p><p><strong>Requester:</strong> ${esc(q.requester)}</p><p><strong>Date:</strong> ${fmtDate(q.date)}</p>${q.has_files?'<p><strong>Attachments:</strong> ✓ Files attached</p>':''}${q.ticket_url?`<p><strong>Ticket:</strong> <a class="ticket-link" href="${esc(q.ticket_url)}" target="_blank">Open in Zendesk ↗</a></p>`:''}</div>`
+
       +`</div></td></tr>`;
   });
   html+="</tbody></table>";
