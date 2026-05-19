@@ -45,5 +45,12 @@
   "1776996861.013519": "Ellie confirmed based on the help article that UTM-tracked links and `?link=` links should be tracked separately. She suggested testing with the `?link=` parameter format to verify, and noted it did work when tested.",
   "1777440078.325399": "Alicya flagged that profiles going from 'Subscribed' to 'Never Subscribed' is unusual and may indicate a bug. She suggested escalating to Business Licensing for further investigation.",
   "1770957219.649239": "",
-  "1771303089.472369": ""
+  "1771303089.472369": "Alicya identified this as a Compliance team escalation, as the SHAFT policy rejection for cannabis-related businesses falls under their purview.",
+  "1779063558.846779": "Alicya tested on desktop and mobile but couldn't replicate the issue, and noted that incognito browsing should always trigger fresh cookie acceptance. She advised telling the customer the issue is likely on their end since it can't be replicated, and to escalate to the BL team.",
+  "1778718605.208799": "Alicya created a test segment and noted it can take up to 20 minutes to populate per the KB. If it still doesn't work, she linked a known Linear issue (GPLAT-425) and advised asking the SA (Bella) to follow up directly in the Linear ticket to flag urgency, since the bug is in backlog with no ETA.",
+  "1778559630.800999": "Alicya noted she had a similar delay issue that gradually improved, and that 3 minutes is still within the acceptable grace period per an existing Slack thread. She recommended sending the customer David's example response about expected flow send times.",
+  "1778218267.090159": "Alicya advised following the internal KB troubleshooting steps for 'Failed' vs 'Verified' status, and suggested temporarily changing the forwarding destination to reset the connection. If it still shows Failed after that, escalate to the BL team.",
+  "1778202751.722479": "Alicya found an SA wiki page confirming custom Started Checkout events can work with GTM, and advised gathering more details from the customer (code snippets, exact setup) before escalating to the SE team — including the wiki doc in the escalation note for context.",
+  "1777354666.781209": "",
+  "1777353168.358689": ""
 }
