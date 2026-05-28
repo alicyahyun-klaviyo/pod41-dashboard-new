@@ -52,5 +52,7 @@
   "1778218267.090159": "Alicya advised following the internal KB troubleshooting steps for 'Failed' vs 'Verified' status, and suggested temporarily changing the forwarding destination to reset the connection. If it still shows Failed after that, escalate to the BL team.",
   "1778202751.722479": "Alicya found an SA wiki page confirming custom Started Checkout events can work with GTM, and advised gathering more details from the customer (code snippets, exact setup) before escalating to the SE team — including the wiki doc in the escalation note for context.",
   "1777354666.781209": "",
-  "1777353168.358689": ""
+  "1777353168.358689": "",
+  "1779847010.701629": "Alicya checked Splunk and confirmed the bulk suppression job was accepted but not yet processed; she suggested waiting a few hours to see if profiles update, and if still not suppressed, to comment on the related Linear ticket ICM-599. Ash later confirmed profiles were still not suppressed after several hours and added the ticket to Linear.",
+  "1779761442.837679": "Alicya suggested verifying the customer has Admin/Editor/Full Control on their Facebook/Meta assets for the Instagram Business account, and asked Meher to collect screenshots of both Facebook Page Advanced Messaging settings (Connected Apps > Klaviyo-IG) and Instagram Website Permissions to confirm all required permissions are enabled. If the issue persists after confirming permissions, the recommendation was to link the similar ticket and escalate to BL."
 }
