@@ -58,13 +58,16 @@ def parse_messages(raw_text):
         reply_m = re.search(r'Thread:\s*(\d+)\s*repl', body)
         ts_m = re.search(r'Message TS:\s*(\d+\.\d+)', body)
         ts = ts_m.group(1) if ts_m else ""
-        suggestion_summary = SUGGESTIONS.get(ts, "")
+        sugg = SUGGESTIONS.get(ts, {})
+        suggestion_summary = sugg.get('summary', '') if isinstance(sugg, dict) else sugg
+        standardized_area = sugg.get('product_area', '') if isinstance(sugg, dict) else ''
         results.append({
             "date": date_clean, "requester": req_m.group(1), "ka": ka,
-            "area": area, "summary": summary, "tried": tried,
+            "area": standardized_area if standardized_area else area, "summary": summary, "tried": tried,
             "ticket_url": ticket_url, "replies": int(reply_m.group(1)) if reply_m else 0,
             "has_files": bool(re.search(r'Files:', body)),
             "suggestion_summary": suggestion_summary,
+            "standardized_area": standardized_area,
         })
     return results
 
