@@ -238,5 +238,17 @@
   "1768976309.785279": {
     "summary": "",
     "product_area": "Integrations"
+  },
+  "1781058058.049269": {
+    "summary": "Alicya suggested the issue could be Gmail clipping or related to the new template editor migration, and advised that since the issue could not be replicated on their end, Meher should reply using the Gmail clipping angle.",
+    "product_area": "Campaigns"
+  },
+  "1780981253.515349": {
+    "summary": "Alicya checked the Staffside campaign view and confirmed variation B was never sent, then recommended escalating to Business Licensing as it was unclear whether the issue stemmed from a platform incident or the linked UI bug (EXP-392).",
+    "product_area": "Campaigns"
+  },
+  "1780540883.378139": {
+    "summary": "Alicya clarified that 'contains text' conditions are not necessarily advanced operators, and recommended escalating to Business Licensing for confirmation while also requesting an update to the internal KB article on cross-account segment cloning.",
+    "product_area": "Lists & Segments"
   }
 }
