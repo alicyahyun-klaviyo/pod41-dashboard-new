@@ -232,7 +232,7 @@
     "product_area": "Flows"
   },
   "1768974941.019099": {
-    "summary": "",
+    "summary": "Alicya suggested the campaign appearing outside the filter range was likely due to Smart Send Time delaying actual send by up to 4 hours past the scheduled date. She also noted this may be a UI bug where the timestamp shown doesn't clearly distinguish between scheduled vs. actual send time.",
     "product_area": "Campaigns"
   },
   "1768976309.785279": {
