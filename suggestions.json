@@ -250,5 +250,13 @@
   "1780540883.378139": {
     "summary": "Alicya clarified that 'contains text' conditions are not necessarily advanced operators, and recommended escalating to Business Licensing for confirmation while also requesting an update to the internal KB article on cross-account segment cloning.",
     "product_area": "Lists & Segments"
+  },
+  "1781489278.987759": {
+    "summary": "Alicya identified the duplicate 'Viewed Product' events as coming from two sources — one client-side via Klaviyo and one server-side via a third-party app (WeTracked). She suggested the customer contact the third-party app to remove their tracking script if they want to eliminate the duplicate events from their flow.",
+    "product_area": "Flows"
+  },
+  "1781486210.101369": {
+    "summary": "Alicya explained that simply seeing their name pre-filled in the preview pane doesn't mean their profile is selected — the user needs to actively retype their email address and select it from the dropdown. She recommended Ash create a Loom to demonstrate the correct preview steps to the customer.",
+    "product_area": "Templates"
   }
 }
