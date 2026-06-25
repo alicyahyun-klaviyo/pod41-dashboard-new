@@ -262,5 +262,9 @@
   "1782196228.732549": {
     "summary": "Alicya identified the 500 errors from Funnel's GET /api/flows/{id}/flow-actions/ are tied to a known bug (FLOW-660) where emails not being set up causes the endpoint to return 500 instead of returning other flow actions. Chris was advised to comment on the Linear ticket that this customer is also affected.",
     "product_area": "Flows"
+  },
+  "1782276376.540469": {
+    "summary": "Alicya suggested using PostmanLite system_status to check the WooCommerce integration URL, which appeared to be pointing to the old .wp1.sh staging site rather than the new .co.uk domain. The recommendation was to advise the customer about the 526 error and suggest removing and re-integrating to fix the URL mismatch.",
+    "product_area": "Integrations"
   }
 }
