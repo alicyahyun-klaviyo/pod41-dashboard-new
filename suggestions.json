@@ -266,5 +266,121 @@
   "1782276376.540469": {
     "summary": "Alicya suggested using PostmanLite system_status to check the WooCommerce integration URL, which appeared to be pointing to the old .wp1.sh staging site rather than the new .co.uk domain. The recommendation was to advise the customer about the 526 error and suggest removing and re-integrating to fix the URL mismatch.",
     "product_area": "Integrations"
+  },
+  "1778639133.396599": {
+    "summary": "",
+    "product_area": "Compliance"
+  },
+  "1778222180.942259": {
+    "summary": "",
+    "product_area": "Campaigns"
+  },
+  "1778214011.625609": {
+    "summary": "",
+    "product_area": "Flows"
+  },
+  "1777875507.317419": {
+    "summary": "Liam identified the SMS link was broken because the customer's URL contained a duplicated 'https//' prefix, causing the link tracking test to fail.",
+    "product_area": "Campaigns"
+  },
+  "1775521207.769709": {
+    "summary": "",
+    "product_area": "Accounts"
+  },
+  "1774240725.616449": {
+    "summary": "",
+    "product_area": "Sign Up Forms"
+  },
+  "1774230512.729739": {
+    "summary": "Alicya clarified that WhatsApp opt-in is a separate subscription from SMS marketing, so testing WhatsApp consent requires its own separate test rather than assuming the SMS test covers both.",
+    "product_area": "Compliance"
+  },
+  "1771898791.537379": {
+    "summary": "",
+    "product_area": "Compliance"
+  },
+  "1771825118.648139": {
+    "summary": "Alicya narrowed down that the profiles missing the button custom property had submitted the sign-up form before a mid-February edit added the buttons/property to it, and recommended escalating to backline referencing three related known bugs about form versioning (BUGPORT-12676, BUGPORT-10679, BUGPORT-11321).",
+    "product_area": "Sign Up Forms"
+  },
+  "1768883664.679339": {
+    "summary": "Alicya advised the customer to use the Subscribe Profiles endpoint instead of Add Profiles to List, since the subscribe endpoint respects double opt-in and lets them specify which list confirmed profiles should be added to.",
+    "product_area": "Integrations"
+  },
+  "1768871633.113709": {
+    "summary": "Alicya walked through the Magento 2 401/404 sync error, advising the customer to whitelist all of Klaviyo's IP ranges and user agent and to check Magento integration permissions; since that didn't resolve it, she recommended escalating to Solutions Engineering.",
+    "product_area": "Integrations"
+  },
+  "1768350521.341249": {
+    "summary": "Alicya and Chris worked through whether removing the popup's targeting rules would make it reappear, tracing the issue to a recent change the customer made to stop showing the form to already-subscribed profiles.",
+    "product_area": "Sign Up Forms"
+  },
+  "1768347712.743069": {
+    "summary": "Alicya and Chris suspected the WooCommerce Added to Cart tracking snippet had stopped injecting after a plugin change; deactivating and reinstalling the WooCommerce integration resolved it once the tracking snippet re-injected.",
+    "product_area": "Integrations"
+  },
+  "1767829542.143459": {
+    "summary": "Alicya suggested removing the old Back in Stock snippet and adjusted the button's override setting to delete it, but advised that the remaining CSS positioning issue would need to be fixed on the customer's own site/theme.",
+    "product_area": "Catalogs & Feeds"
+  },
+  "1767667368.914139": {
+    "summary": "Alicya confirmed the broken images were from stale image URLs captured by past review-request events; once the product images were updated, new events like Viewed Product or Checkout Started served the correct image, and she suggested checking with the Reviews team and any product-management plugins for the two products that still showed old images.",
+    "product_area": "Templates"
+  },
+  "1767151194.397079": {
+    "summary": "Alicya checked whether the missing recipients belonged to any of the campaign's excluded segments at send time but found no matches, so she recommended escalating to backline for further review.",
+    "product_area": "Campaigns"
+  },
+  "1767053027.528819": {
+    "summary": "Alicya concluded the suppressed-profiles count mismatch was likely a display glitch since no profiles actually appeared in the suppression list, and recommended escalating to backline.",
+    "product_area": "Lists & Segments"
+  },
+  "1766448340.907789": {
+    "summary": "",
+    "product_area": "Email Deliverability"
+  },
+  "1766373737.515899": {
+    "summary": "Alicya explained that 'Locale' is only set via Shopify data, then found the profile's location may have been updated to AU through opened/clicked email events, which could explain why it wasn't excluded from the EU/UK segment; she recommended escalating to backline to confirm the location history and flag a possible bug.",
+    "product_area": "Lists & Segments"
+  },
+  "1765939460.219739": {
+    "summary": "Alicya suggested clearing the product feed cache to fix outdated 'newest' items showing, and explained that Klaviyo's product feed always pulls the first image on a catalog item -- to show a different image, the workaround is to store the alternate image URL as custom metadata and reference it via catalog lookup, or build a fully custom feed using Klaviyo's dev blog guide.",
+    "product_area": "Catalogs & Feeds"
+  },
+  "1765857000.476709": {
+    "summary": "Laurel explained the giveaway DM feature currently only triggers off comments, not @mentions in DMs, and is still being refined; since the missing opt-in confirmation message couldn't be replicated, she recommended flagging it in the klaviyo-social-marketing channel and holding the ticket.",
+    "product_area": "K-Social"
+  },
+  "1765849472.882129": {
+    "summary": "The team found an existing bug ticket (BUGPORT-11919) for the unexplained '$source -154' value and recommended escalating to backline referencing it; a teammate speculated -154 might correspond to a Zenoti integration, though this was unconfirmed.",
+    "product_area": "Integrations"
+  },
+  "1765779541.799909": {
+    "summary": "Alicya pointed to the Magento 2 coupon-creation KB guide and advised granting the 'thin_klaviyo' user permission; when the error persisted after re-integration, she recommended getting a screenshot of the whitelisted IPs and escalating to Solutions Engineering.",
+    "product_area": "Integrations"
+  },
+  "1765776412.793979": {
+    "summary": "Cecilia found the webhook's API key had customized access and the content-type header contained stray quotes; she suggested fixing the content-type header and granting edit access to test, or copying the payload into a test account, while Alicya shared the correct 2024 vs 2025 API header formats to check against.",
+    "product_area": "Flows"
+  },
+  "1765256052.728079": {
+    "summary": "Alicya found two related bug tickets (BUGPORT-10942 and BUGPORT-11145) matching a profile that should have entered the flow but didn't, and recommended escalating to backline as a likely bug.",
+    "product_area": "Flows"
+  },
+  "1765254840.251759": {
+    "summary": "Alicya found that although the profile wasn't currently in the EU/UK segment, its location had been set to Germany around Dec 6-7 before being updated again by a new Placed Order event, which explains why it received the campaign at send time.",
+    "product_area": "Lists & Segments"
+  },
+  "1764298796.670769": {
+    "summary": "Alicya clarified that 'Previous RFM group' isn't an actual custom property but part of the RFM analytics tab on the profile page, so the segment results were accurate even though the property wasn't listed under profile properties.",
+    "product_area": "Lists & Segments"
+  },
+  "1764131418.560149": {
+    "summary": "Cecilia explained that since the integration had only been disabled and re-enabled (not fully reconnected), no historical sync ran automatically for that gap, and suggested manually triggering a sync for that date range via an inspector task.",
+    "product_area": "Integrations"
+  },
+  "1764125791.679709": {
+    "summary": "Cecilia and Stephanie identified a race condition where the 'Form Completed' event sometimes fires after the 'Subscribed to List' event, causing profiles to fail the flow's entry filter; they recommended switching the trigger filter to 'Form Submitted' instead of 'Form Completed', optionally with a short time delay.",
+    "product_area": "Flows"
   }
 }
