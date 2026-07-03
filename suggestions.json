@@ -382,5 +382,9 @@
   "1764125791.679709": {
     "summary": "Cecilia and Stephanie identified a race condition where the 'Form Completed' event sometimes fires after the 'Subscribed to List' event, causing profiles to fail the flow's entry filter; they recommended switching the trigger filter to 'Form Submitted' instead of 'Form Completed', optionally with a short time delay.",
     "product_area": "Flows"
+  },
+  "1782959001.821759": {
+    "summary": "Alicya confirmed the profile should have qualified for Email 2 after being added via Add Past Profiles, but no profiles were queued for emails 2 or 3. She identified this as impacted by known bug FP-1934 (Flows 2.0 metric-triggered flow not adding past profiles) and advised Meher to escalate to Business Licensing referencing that profiles aren't showing where expected.",
+    "product_area": "Flows"
   }
 }
