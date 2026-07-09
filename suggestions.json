@@ -213,7 +213,7 @@
   },
   "1777353168.358689": {
     "summary": "",
-    "product_area": "Integrations"
+    "product_area": "Accounts"
   },
   "1779847010.701629": {
     "summary": "Alicya checked Splunk and confirmed the bulk suppression job was accepted but not yet processed; she suggested waiting a few hours to see if profiles update, and if still not suppressed, to comment on the related Linear ticket ICM-599. Ash later confirmed profiles were still not suppressed after several hours and added the ticket to Linear.",
@@ -268,15 +268,15 @@
     "product_area": "Integrations"
   },
   "1778639133.396599": {
-    "summary": "",
-    "product_area": "Compliance"
+    "summary": "SMS testing request for Fat Beats; Alicya provided the verification code (808664) so the requester could confirm the test message was received.",
+    "product_area": "Campaigns"
   },
   "1778222180.942259": {
-    "summary": "",
+    "summary": "SMS testing request for Sparkle In Pink to confirm a test campaign send; Alicya sent a screenshot confirming the message sent successfully, no further action needed.",
     "product_area": "Campaigns"
   },
   "1778214011.625609": {
-    "summary": "",
+    "summary": "SMS testing request for SHOPLUNAB to test subscription to an SMS marketing flow; Alexander Wearne picked it up (Alicya was on lunch) and resolved the request.",
     "product_area": "Flows"
   },
   "1777875507.317419": {
@@ -284,11 +284,11 @@
     "product_area": "Campaigns"
   },
   "1775521207.769709": {
-    "summary": "",
+    "summary": "SMS testing request for Xpeed Fitness to test Customer Hub Sign-In Consent; Cecilia Lin checked and found no test messages had come through from this brand yet.",
     "product_area": "Accounts"
   },
   "1774240725.616449": {
-    "summary": "",
+    "summary": "SMS testing request for Aran Sweater Market to test sign-up form and SMS subscription; Alicya provided the confirmation code (129494) and a screenshot as proof.",
     "product_area": "Sign Up Forms"
   },
   "1774230512.729739": {
@@ -296,8 +296,8 @@
     "product_area": "Compliance"
   },
   "1771898791.537379": {
-    "summary": "",
-    "product_area": "Compliance"
+    "summary": "SMS testing request for Fitness Exchange to confirm SMS subscription; Alicya replied YES to confirm the subscription and the request was resolved.",
+    "product_area": "Campaigns"
   },
   "1771825118.648139": {
     "summary": "Alicya narrowed down that the profiles missing the button custom property had submitted the sign-up form before a mid-February edit added the buttons/property to it, and recommended escalating to backline referencing three related known bugs about form versioning (BUGPORT-12676, BUGPORT-10679, BUGPORT-11321).",
@@ -336,7 +336,7 @@
     "product_area": "Lists & Segments"
   },
   "1766448340.907789": {
-    "summary": "",
+    "summary": "Customer's campaign send to Yahoo/AOL (Verizon Media Group) recipients showed a delayed increase in sent counts (60 then 389 of ~900-1000); Alicya shared a profile screenshot to help review, consistent with known delivery reporting delays to these providers.",
     "product_area": "Email Deliverability"
   },
   "1766373737.515899": {
