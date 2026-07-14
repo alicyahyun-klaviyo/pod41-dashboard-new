@@ -386,5 +386,9 @@
   "1782959001.821759": {
     "summary": "Alicya confirmed the profile should have qualified for Email 2 after being added via Add Past Profiles, but no profiles were queued for emails 2 or 3. She identified this as impacted by known bug FP-1934 (Flows 2.0 metric-triggered flow not adding past profiles) and advised Meher to escalate to Business Licensing referencing that profiles aren't showing where expected.",
     "product_area": "Flows"
+  },
+  "1783917859.999319": {
+    "summary": "Claude-assisted investigation traced the crash to the onsite JS base loader pulling all onsite chunks (atlas, forms, telemetry, product recommendations) from a build-preview/commit path instead of a normal production path; a customerHub config/feature-flag object was never initialized in that build, causing the uncaught 'customerHubOnboarded' error. Recommendation was to escalate to the K-Service engineering team to confirm whether this is expected behavior or a bug.",
+    "product_area": "K-Service"
   }
 }
