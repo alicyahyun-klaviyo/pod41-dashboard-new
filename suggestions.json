@@ -390,5 +390,9 @@
   "1783917859.999319": {
     "summary": "Claude-assisted investigation traced the crash to the onsite JS base loader pulling all onsite chunks (atlas, forms, telemetry, product recommendations) from a build-preview/commit path instead of a normal production path; a customerHub config/feature-flag object was never initialized in that build, causing the uncaught 'customerHubOnboarded' error. Recommendation was to escalate to the K-Service engineering team to confirm whether this is expected behavior or a bug.",
     "product_area": "K-Service"
+  },
+  "1784005646.038979": {
+    "summary": "Checked via Staffside whether each account's flow was on Flows V1 or V2 — AU was on V1 (has Custom Actions) while NZ was on V2 (Custom Actions not yet supported until July). Advised asking in the referenced Slack channel if custom actions could be enabled for the NZ (V2) account rather than sending the same explanation used in a prior case.",
+    "product_area": "Flows"
   }
 }
