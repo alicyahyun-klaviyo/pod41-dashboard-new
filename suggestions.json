@@ -394,5 +394,9 @@
   "1784005646.038979": {
     "summary": "Checked via Staffside whether each account's flow was on Flows V1 or V2 — AU was on V1 (has Custom Actions) while NZ was on V2 (Custom Actions not yet supported until July). Advised asking in the referenced Slack channel if custom actions could be enabled for the NZ (V2) account rather than sending the same explanation used in a prior case.",
     "product_area": "Flows"
+  },
+  "1784076518.007999": {
+    "summary": "Alicya identified this was likely the known FP-2122 bug (profile stuck in executing state). Chris planned to ask on the Linear ticket whether the affected profile's flow actions could be pushed through or replayed.",
+    "product_area": "Flows"
   }
 }
