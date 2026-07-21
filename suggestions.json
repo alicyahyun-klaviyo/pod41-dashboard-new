@@ -213,7 +213,7 @@
   },
   "1777353168.358689": {
     "summary": "",
-    "product_area": "Accounts"
+    "product_area": "Integrations"
   },
   "1779847010.701629": {
     "summary": "Alicya checked Splunk and confirmed the bulk suppression job was accepted but not yet processed; she suggested waiting a few hours to see if profiles update, and if still not suppressed, to comment on the related Linear ticket ICM-599. Ash later confirmed profiles were still not suppressed after several hours and added the ticket to Linear.",
