@@ -398,5 +398,9 @@
   "1784076518.007999": {
     "summary": "Alicya identified this was likely the known FP-2122 bug (profile stuck in executing state). Chris planned to ask on the Linear ticket whether the affected profile's flow actions could be pushed through or replayed.",
     "product_area": "Flows"
+  },
+  "1784601823.132889": {
+    "summary": "Root cause was that the segment definition was changed (grew from ~1.6k to 27k+ profiles) after the campaign was scheduled; since RAST was disabled, the campaign only sent to the segment snapshot taken at schedule time. Recommended verifying timing via the segment growth report and account activity logs, and enabling RAST going forward if audience updates made after scheduling should be captured in the send.",
+    "product_area": "Campaigns"
   }
 }
