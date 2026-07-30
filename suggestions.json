@@ -406,5 +406,9 @@
   "1785215945.575849": {
     "summary": "The thread confirmed the bug is real (some custom object property mappings save successfully while others silently fail, shown highlighted in a screenshot), but no fix or workaround was shared in the thread beyond acknowledging the issue.",
     "product_area": "Integrations"
+  },
+  "1785292726.060769": {
+    "summary": "Team discussed the 403 periodic sync error and confirmed the customer's Meta permissions and TOS acceptance looked fine, so no clear fix was found in-thread. Ash shared that a similar case was resolved by manually restarting the periodic sync via the KB steps, and the team agreed to watch how SE handles this ticket before treating that as a standard practice; ultimately escalated to SE.",
+    "product_area": "Integrations"
   }
 }
