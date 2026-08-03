@@ -410,5 +410,13 @@
   "1785292726.060769": {
     "summary": "Team discussed the 403 periodic sync error and confirmed the customer's Meta permissions and TOS acceptance looked fine, so no clear fix was found in-thread. Ash shared that a similar case was resolved by manually restarting the periodic sync via the KB steps, and the team agreed to watch how SE handles this ticket before treating that as a standard practice; ultimately escalated to SE.",
     "product_area": "Integrations"
+  },
+  "1785481140.910739": {
+    "summary": "Alicya used Claude to diagnose that the 422 came from a stale label_color value left on a Social Links block after show_labels was toggled off, which the API validator now rejects on read. She confirmed this looks like a backend/API bug (422 isn't even a documented status code) and told Ash to escalate to SE, flagging that the customer is using the MCP.",
+    "product_area": "Templates"
+  },
+  "1785379305.983709": {
+    "summary": "Alicya confirmed this matches the known FP-3146 bug (flow A/B test not recording deliveries correctly), the same pattern she'd seen reported by the CNX team, which explains why flow analytics under-report despite messages actually sending.",
+    "product_area": "Flows"
   }
 }
