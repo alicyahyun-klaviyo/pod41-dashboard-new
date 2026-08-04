@@ -418,5 +418,9 @@
   "1785379305.983709": {
     "summary": "Alicya confirmed this matches the known FP-3146 bug (flow A/B test not recording deliveries correctly), the same pattern she'd seen reported by the CNX team, which explains why flow analytics under-report despite messages actually sending.",
     "product_area": "Flows"
+  },
+  "1785717075.904029": {
+    "summary": "The team found several prior tickets with the same Shopware plugin bug (repeated DOI resends caused by historical_import:false on every call). A fix exists in plugin v1.14.3/1.14.4, so they advised waiting for the customer to update; if the issue persists after updating, the plan is to ask in the #ask-shopware channel for further help.",
+    "product_area": "Integrations"
   }
 }
