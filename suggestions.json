@@ -422,5 +422,9 @@
   "1785717075.904029": {
     "summary": "The team found several prior tickets with the same Shopware plugin bug (repeated DOI resends caused by historical_import:false on every call). A fix exists in plugin v1.14.3/1.14.4, so they advised waiting for the customer to update; if the issue persists after updating, the plan is to ask in the #ask-shopware channel for further help.",
     "product_area": "Integrations"
+  },
+  "1785819666.456059": {
+    "summary": "Alicya confirmed the missing blocks issue looked unusual/unexpected, but no specific fix or next step had been given yet in the thread.",
+    "product_area": "Templates"
   }
 }
