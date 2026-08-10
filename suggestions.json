@@ -1,430 +1,434 @@
 {
-  "1769038997.128369": {
-    "summary": "Alicya explained that coupon expiry must be set as a fixed date (not a relative period like '14 days'), but leaving it blank defaults to 1-year expiry from when the profile enters the flow. She suggested asking in #ask-apis about adding a relative expiry option.",
-    "product_area": "Integrations"
-  },
-  "1769045943.456189": {
-    "summary": "Alicya suggested following the existing guide carefully and making sure the Save button is clicked, then asking the customer for a screen recording if the issue persists.",
-    "product_area": "Integrations"
-  },
-  "1769473885.412669": {
-    "summary": "Alicya identified that the product URL in the customer's custom catalog feed was syncing with the incorrect URL, and recommended they fix it in their feed. She also suggested looping in the CSM to alert them to the situation.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1769474820.595639": {
-    "summary": "Alicya walked through the options: either fix the custom catalog feed with developer help, or delete it entirely and resync using the Shopify catalog (noting this would affect Back-in-Stock). She recommended clarifying with the customer which path they prefer.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1769483628.477399": {
-    "summary": "Alicya confirmed this is a standard IP whitelisting issue and directed the customer to follow the relevant steps.",
-    "product_area": "Integrations"
-  },
-  "1770182578.446889": {
-    "summary": "Alicya suggested escalating to the Billing team to get the customer a usage report, and noted that a custom report on API usage may also be possible.",
-    "product_area": "Campaigns"
-  },
-  "1770611442.897849": {
-    "summary": "Alicya found the issue was caused by incorrect metric mapping \u2014 Placed Order was mapped to an individual item metric, so revenue couldn't be calculated. She recommended the customer remap their metrics following the predictive analysis guide.",
-    "product_area": "Lists & Segments"
-  },
-  "1770775816.050079": {
-    "summary": "Alicya suggested increasing the integration's connection_timeout setting (to around 50) to resolve the 503 timeout errors, then waiting until the expected sync completion date to see if it succeeds.",
-    "product_area": "Integrations"
-  },
-  "1771285295.906489": {
-    "summary": "Alicya found the account was still mapped to the old BigCommerce integration, causing the Price Drop flow to behave unexpectedly. She recommended removing the BigCommerce integration, purging the catalog, and resyncing solely from Shopify.",
-    "product_area": "Flows"
-  },
-  "1771802851.241019": {
-    "summary": "Ash explained that 'Incomplete' status on the SMS carrier form is expected \u2014 it stays that way until the carrier starts reviewing (Klaviyo can't update it). She also suggested escalating to the SMS Delivery & Compliance team.",
-    "product_area": "Compliance"
-  },
-  "1771911635.633339": {
-    "summary": "Alicya suggested clearing cookies/cache for at least 7 days and having the customer log into Klaviyo directly rather than via Shopify. Stephanie provided context on the 'Session Expired' error behaviour.",
-    "product_area": "Accounts"
-  },
-  "1772065678.891219": {
-    "summary": "Alicya noted that edit access to the account is required to view the inactive segment \u2014 the customer should check if the profile appears there. Liam flagged a potentially related Jeremy ticket on the same issue.",
-    "product_area": "Lists & Segments"
-  },
-  "1772149611.788399": {
-    "summary": "Cecilia corrected the Jinja template syntax, explained that `&nbsp;` is a space encoding (suggesting a Django filter to strip it), and recommended always verifying the event property name using the actual event in Klaviyo.",
-    "product_area": "Flows"
-  },
-  "1772757828.265509": {
-    "summary": "Alicya suggested testing whether cloning the template with a description present resolves the issue, as it may be a known bug already tracked in Jira.",
-    "product_area": "Campaigns"
-  },
-  "1773108521.664789": {
-    "summary": "Ray reviewed the flow re-entry criteria change and found it was likely tightened in late February, reducing eligible profiles. He suggested asking the customer if they recall any prior filter configuration changes.",
-    "product_area": "Flows"
-  },
-  "1773120963.358449": {
-    "summary": "Alicya found the account is on a free plan, which doesn't support custom objects. She suggested using the 'Transfer Ticket: Escalation to At Scale CSMs' macro to escalate and arrange a paid plan upgrade.",
-    "product_area": "Integrations"
-  },
-  "1773121633.382599": {
-    "summary": "Alicya suggested verifying that the Shopify collections being synced actually contain products, enabling membership sync, and waiting about 10 minutes to see if products appear before concluding there's an issue.",
-    "product_area": "Flows"
-  },
-  "1773189859.609619": {
-    "summary": "Alicya provided the correct Jinja loop syntax \u2014 `{% for item in event.Items %}{% catalog item.SKU %}` \u2014 to dynamically look up catalog items, and recommended using a text block rather than an image block for better control of the layout.",
-    "product_area": "Templates"
-  },
-  "1773720809.859979": {
-    "summary": "Stephanie investigated and found this may be expected behaviour \u2014 the Messages tab preview shows the translated version. She recommended confirming whether the customer actually received the email in French, and if so, submitting product feedback.",
-    "product_area": "Campaigns"
-  },
-  "1773724857.811679": {
-    "summary": "Ash noted the form was still in draft mode, which prevents proper CSS inspection. Alicya reminded the team that sign-up forms must be published live before troubleshooting CSS conflicts.",
-    "product_area": "Sign Up Forms"
-  },
-  "1774222143.590809": {
-    "summary": "Alicya investigated and traced the unexpected subscription to Shopify \u2014 the profile was subscribing when they logged into Shopify and had email marketing opted in. She suggested sharing a Loom recording to show the customer the source.",
-    "product_area": "Integrations"
-  },
-  "1774233987.278309": {
-    "summary": "Liam identified that events sent from test email addresses (e.g. @example.com) are silently dropped by the API with a 202 response. Alicya also found the developer was using the wrong API key (pointing to a staging account instead of production).",
-    "product_area": "Flows"
-  },
-  "1774244972.761169": {
-    "summary": "Alicya suggested escalating to the Solutions Engineering team and referencing the related ticket that Chuck had previously helped with.",
-    "product_area": "Integrations"
-  },
-  "1774311751.774059": {
-    "summary": "Alicya noticed profiles unsubscribed as far back as 2023 were incorrectly included, and suggested escalating to Business Licensing as this looks like a potential bug.",
-    "product_area": "Lists & Segments"
-  },
-  "1774324015.586179": {
-    "summary": "Alicya recommended exporting the Mailchimp list to CSV before the account expires as the safest option, then doing a list import in Klaviyo to avoid triggering a sync that could cause issues.",
-    "product_area": "Integrations"
-  },
-  "1774402171.267829": {
-    "summary": "Alicya tested the BigCommerce catalog image URL lookup and found `image_full_url` was returning empty, suggesting the image isn't synced in the catalog. She recommended visiting the BL office hours or escalating to Business Licensing.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1774407812.759589": {
-    "summary": "Alicya identified this as a hotlinking issue and suggested following the relevant section of the troubleshooting guide.",
-    "product_area": "Integrations"
-  },
-  "1774414684.774139": {
-    "summary": "Alicya suggested having the customer create a new CSV with only a `PhoneNumber` column (no email column) to resolve the import error caused by the format mismatch.",
-    "product_area": "Integrations"
-  },
-  "1774417545.312269": {
-    "summary": "Alicya suggested clearing the product feed cache as a first troubleshooting step.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1774491439.671959": {
-    "summary": "Alicya found the phone number wasn't importing correctly due to a space in the formatting, and noted the test profile appears to have been flagged.",
-    "product_area": "Sign Up Forms"
-  },
-  "1774491940.644039": {
-    "summary": "Ray checked fulfilled order events and found `shipping_status` data was correct for recent profiles. He suggested asking the customer to confirm whether any recent UPS orders recorded the confirmed shipment event.",
-    "product_area": "Integrations"
-  },
-  "1774842433.600779": {
-    "summary": "Ray found that `compare_at_price` is not available when using Klaviyo's localise-for-recipient feature, meaning the higher/compare price cannot be shown dynamically to AU recipients.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1775001841.246449": {
-    "summary": "Cecilia spotted socket errors in the periodic syncs and flagged it for Dmytro. Dmytro suggested increasing the `connection_timeout` setting to 90 to resolve the sync failures.",
-    "product_area": "Integrations"
-  },
-  "1775618241.227199": {
-    "summary": "Cecilia identified SMS quiet hours as the cause \u2014 the account's quiet hours end at 11am, which delayed the flow messages by 30 minutes. She shared a screenshot of the account's quiet hours settings to confirm.",
-    "product_area": "Flows"
-  },
-  "1775784892.312329": {
-    "summary": "Ray diagnosed the issue as the customer's strict referrer policy settings blocking the custom font from loading. He recommended having their developers review and adjust the CORS/referrer policy settings.",
-    "product_area": "Templates"
-  },
-  "1775796232.617289": {
-    "summary": "Cecilia identified a race condition \u2014 the flow trigger fires on Shopify Placed Order, but the conditional splits check against a custom Placed Order metric that wasn't recorded yet. She suggested adding a time delay to account for the gap.",
-    "product_area": "Flows"
-  },
-  "1776210438.411569": {
-    "summary": "Dmytro confirmed PrestaShop v9.0 is not currently supported by Klaviyo. He suggested posting in the docs channel to get the help article updated, and submitting a feature request for Presta 9 support.",
-    "product_area": "Integrations"
-  },
-  "1776229511.049799": {
-    "summary": "The data-privacy-deletion-jobs endpoint requires a private API key and not OAuth Bearer auth \u2014 though the customer switched to a private key the 401 persisted. Dmytro linked to a Slack thread (Apr 16) that appears to contain the follow-up resolution.",
-    "product_area": "Integrations"
-  },
-  "1776646984.797019": {
-    "summary": "Jeremy suggested the duplicate Shopify integration as a likely cause. Alicya investigated and found the profile was subscribed via Shopify login (triggered by Shopify's webhook), and that a second integration account also had this profile.",
-    "product_area": "Sign Up Forms"
-  },
-  "1776655799.045499": {
-    "summary": "Alicya suggested not going too deep on the HTML troubleshooting \u2014 instead, refer the customer to Klaviyo's product block extension guide or use AI to help achieve the layout, with the vertical display guide as a fallback.",
-    "product_area": "Templates"
-  },
-  "1776657268.544969": {
-    "summary": "Alicya noted the customer is using the correct `item.productVariantPlatformId` variable but the Shopify catalog may not support dynamic variant image lookups. She suggested trying the approach from the related method guide, and asking in #ask-apis if it's achievable.",
-    "product_area": "Templates"
-  },
-  "1776732940.057439": {
-    "summary": "Alicya asked about display rules on the template sections. Liam found the section had display logic set on it that was preventing it from showing, which was the root cause.",
-    "product_area": "Templates"
-  },
-  "1776991611.255499": {
-    "summary": "Dmytro suggested pointing the customer to Cloudflare's official WAF custom rules guide for hotlink protection, and if their implementation is still causing issues, to contact Cloudflare support directly.",
-    "product_area": "Integrations"
-  },
-  "1776996861.013519": {
-    "summary": "Ellie confirmed based on the help article that UTM-tracked links and `?link=` links should be tracked separately. She suggested testing with the `?link=` parameter format to verify, and noted it did work when tested.",
-    "product_area": "Campaigns"
-  },
-  "1777440078.325399": {
-    "summary": "Alicya flagged that profiles going from 'Subscribed' to 'Never Subscribed' is unusual and may indicate a bug. She suggested escalating to Business Licensing for further investigation.",
-    "product_area": "Lists & Segments"
-  },
-  "1770957219.649239": {
-    "summary": "The campaign clone freeze between AU and NZ accounts resolved itself without intervention \u2014 Ash confirmed it fixed with patience and linked related bug reports BUGPORT-10542 and BUGPORT-10575 for reference.",
-    "product_area": "Campaigns"
-  },
-  "1771303089.472369": {
-    "summary": "Alicya identified this as a Compliance team escalation, as the SHAFT policy rejection for cannabis-related businesses falls under their purview.",
-    "product_area": "Compliance"
-  },
-  "1779063558.846779": {
-    "summary": "Alicya tested on desktop and mobile but couldn't replicate the issue, and noted that incognito browsing should always trigger fresh cookie acceptance. She advised telling the customer the issue is likely on their end since it can't be replicated, and to escalate to the BL team.",
-    "product_area": "Integrations"
-  },
-  "1778718605.208799": {
-    "summary": "Alicya created a test segment and noted it can take up to 20 minutes to populate per the KB. If it still doesn't work, she linked a known Linear issue (GPLAT-425) and advised asking the SA (Bella) to follow up directly in the Linear ticket to flag urgency, since the bug is in backlog with no ETA.",
-    "product_area": "Lists & Segments"
-  },
-  "1778559630.800999": {
-    "summary": "Alicya noted she had a similar delay issue that gradually improved, and that 3 minutes is still within the acceptable grace period per an existing Slack thread. She recommended sending the customer David's example response about expected flow send times.",
-    "product_area": "Flows"
-  },
-  "1778218267.090159": {
-    "summary": "Alicya advised following the internal KB troubleshooting steps for 'Failed' vs 'Verified' status, and suggested temporarily changing the forwarding destination to reset the connection. If it still shows Failed after that, escalate to the BL team.",
-    "product_area": "K-Service"
-  },
-  "1778202751.722479": {
-    "summary": "Alicya found an SA wiki page confirming custom Started Checkout events can work with GTM, and advised gathering more details from the customer (code snippets, exact setup) before escalating to the SE team \u2014 including the wiki doc in the escalation note for context.",
-    "product_area": "Integrations"
-  },
-  "1777354666.781209": {
-    "summary": "",
-    "product_area": "Integrations"
-  },
-  "1777353168.358689": {
-    "summary": "",
-    "product_area": "Integrations"
-  },
-  "1779847010.701629": {
-    "summary": "Alicya checked Splunk and confirmed the bulk suppression job was accepted but not yet processed; she suggested waiting a few hours to see if profiles update, and if still not suppressed, to comment on the related Linear ticket ICM-599. Ash later confirmed profiles were still not suppressed after several hours and added the ticket to Linear.",
-    "product_area": "Accounts"
-  },
-  "1779761442.837679": {
-    "summary": "Alicya suggested verifying the customer has Admin/Editor/Full Control on their Facebook/Meta assets for the Instagram Business account, and asked Meher to collect screenshots of both Facebook Page Advanced Messaging settings (Connected Apps > Klaviyo-IG) and Instagram Website Permissions to confirm all required permissions are enabled. If the issue persists after confirming permissions, the recommendation was to link the similar ticket and escalate to BL.",
-    "product_area": "K-Social"
-  },
-  "1780385147.567209": {
-    "summary": "Alicya confirmed the same 500 internal server error in the customer's account (Back in Stock Reports tab) but could not replicate it in test accounts. She recommended escalating to Business Licensing.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1780382399.932479": {
-    "summary": "Alicya found many recent skips in the flow evaluation due to 'No recipients', visible even on the day of the query. She suggested asking the customer to check their internal alert recipient details (consent status), and linked Linear bug FP-1817 as a likely cause if profiles show a green checkmark but still aren't receiving alerts.",
-    "product_area": "Flows"
-  },
-  "1768974941.019099": {
-    "summary": "Alicya suggested the campaign appearing outside the filter range was likely due to Smart Send Time delaying actual send by up to 4 hours past the scheduled date. She also noted this may be a UI bug where the timestamp shown doesn't clearly distinguish between scheduled vs. actual send time.",
-    "product_area": "Campaigns"
-  },
-  "1768976309.785279": {
-    "summary": "",
-    "product_area": "Integrations"
-  },
-  "1781058058.049269": {
-    "summary": "Alicya suggested the issue could be Gmail clipping or related to the new template editor migration, and advised that since the issue could not be replicated on their end, Meher should reply using the Gmail clipping angle.",
-    "product_area": "Campaigns"
-  },
-  "1780981253.515349": {
-    "summary": "Alicya checked the Staffside campaign view and confirmed variation B was never sent, then recommended escalating to Business Licensing as it was unclear whether the issue stemmed from a platform incident or the linked UI bug (EXP-392).",
-    "product_area": "Campaigns"
-  },
-  "1780540883.378139": {
-    "summary": "Alicya clarified that 'contains text' conditions are not necessarily advanced operators, and recommended escalating to Business Licensing for confirmation while also requesting an update to the internal KB article on cross-account segment cloning.",
-    "product_area": "Lists & Segments"
-  },
-  "1781489278.987759": {
-    "summary": "Alicya identified the duplicate 'Viewed Product' events as coming from two sources \u2014 one client-side via Klaviyo and one server-side via a third-party app (WeTracked). She suggested the customer contact the third-party app to remove their tracking script if they want to eliminate the duplicate events from their flow.",
-    "product_area": "Flows"
-  },
-  "1781486210.101369": {
-    "summary": "Alicya explained that simply seeing their name pre-filled in the preview pane doesn't mean their profile is selected \u2014 the user needs to actively retype their email address and select it from the dropdown. She recommended Ash create a Loom to demonstrate the correct preview steps to the customer.",
-    "product_area": "Templates"
-  },
-  "1782196228.732549": {
-    "summary": "Alicya identified the 500 errors from Funnel's GET /api/flows/{id}/flow-actions/ are tied to a known bug (FLOW-660) where emails not being set up causes the endpoint to return 500 instead of returning other flow actions. Chris was advised to comment on the Linear ticket that this customer is also affected.",
-    "product_area": "Flows"
-  },
-  "1782276376.540469": {
-    "summary": "Alicya suggested using PostmanLite system_status to check the WooCommerce integration URL, which appeared to be pointing to the old .wp1.sh staging site rather than the new .co.uk domain. The recommendation was to advise the customer about the 526 error and suggest removing and re-integrating to fix the URL mismatch.",
-    "product_area": "Integrations"
-  },
-  "1778639133.396599": {
-    "summary": "SMS testing request for Fat Beats; Alicya provided the verification code (808664) so the requester could confirm the test message was received.",
-    "product_area": "Campaigns"
-  },
-  "1778222180.942259": {
-    "summary": "SMS testing request for Sparkle In Pink to confirm a test campaign send; Alicya sent a screenshot confirming the message sent successfully, no further action needed.",
-    "product_area": "Campaigns"
-  },
-  "1778214011.625609": {
-    "summary": "SMS testing request for SHOPLUNAB to test subscription to an SMS marketing flow; Alexander Wearne picked it up (Alicya was on lunch) and resolved the request.",
-    "product_area": "Flows"
-  },
-  "1777875507.317419": {
-    "summary": "Liam identified the SMS link was broken because the customer's URL contained a duplicated 'https//' prefix, causing the link tracking test to fail.",
-    "product_area": "Campaigns"
-  },
-  "1775521207.769709": {
-    "summary": "SMS testing request for Xpeed Fitness to test Customer Hub Sign-In Consent; Cecilia Lin checked and found no test messages had come through from this brand yet.",
-    "product_area": "Accounts"
-  },
-  "1774240725.616449": {
-    "summary": "SMS testing request for Aran Sweater Market to test sign-up form and SMS subscription; Alicya provided the confirmation code (129494) and a screenshot as proof.",
-    "product_area": "Sign Up Forms"
-  },
-  "1774230512.729739": {
-    "summary": "Alicya clarified that WhatsApp opt-in is a separate subscription from SMS marketing, so testing WhatsApp consent requires its own separate test rather than assuming the SMS test covers both.",
-    "product_area": "Compliance"
-  },
-  "1771898791.537379": {
-    "summary": "SMS testing request for Fitness Exchange to confirm SMS subscription; Alicya replied YES to confirm the subscription and the request was resolved.",
-    "product_area": "Campaigns"
-  },
-  "1771825118.648139": {
-    "summary": "Alicya narrowed down that the profiles missing the button custom property had submitted the sign-up form before a mid-February edit added the buttons/property to it, and recommended escalating to backline referencing three related known bugs about form versioning (BUGPORT-12676, BUGPORT-10679, BUGPORT-11321).",
-    "product_area": "Sign Up Forms"
-  },
-  "1768883664.679339": {
-    "summary": "Alicya advised the customer to use the Subscribe Profiles endpoint instead of Add Profiles to List, since the subscribe endpoint respects double opt-in and lets them specify which list confirmed profiles should be added to.",
-    "product_area": "Integrations"
-  },
-  "1768871633.113709": {
-    "summary": "Alicya walked through the Magento 2 401/404 sync error, advising the customer to whitelist all of Klaviyo's IP ranges and user agent and to check Magento integration permissions; since that didn't resolve it, she recommended escalating to Solutions Engineering.",
-    "product_area": "Integrations"
-  },
-  "1768350521.341249": {
-    "summary": "Alicya and Chris worked through whether removing the popup's targeting rules would make it reappear, tracing the issue to a recent change the customer made to stop showing the form to already-subscribed profiles.",
-    "product_area": "Sign Up Forms"
-  },
-  "1768347712.743069": {
-    "summary": "Alicya and Chris suspected the WooCommerce Added to Cart tracking snippet had stopped injecting after a plugin change; deactivating and reinstalling the WooCommerce integration resolved it once the tracking snippet re-injected.",
-    "product_area": "Integrations"
-  },
-  "1767829542.143459": {
-    "summary": "Alicya suggested removing the old Back in Stock snippet and adjusted the button's override setting to delete it, but advised that the remaining CSS positioning issue would need to be fixed on the customer's own site/theme.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1767667368.914139": {
-    "summary": "Alicya confirmed the broken images were from stale image URLs captured by past review-request events; once the product images were updated, new events like Viewed Product or Checkout Started served the correct image, and she suggested checking with the Reviews team and any product-management plugins for the two products that still showed old images.",
-    "product_area": "Templates"
-  },
-  "1767151194.397079": {
-    "summary": "Alicya checked whether the missing recipients belonged to any of the campaign's excluded segments at send time but found no matches, so she recommended escalating to backline for further review.",
-    "product_area": "Campaigns"
-  },
-  "1767053027.528819": {
-    "summary": "Alicya concluded the suppressed-profiles count mismatch was likely a display glitch since no profiles actually appeared in the suppression list, and recommended escalating to backline.",
-    "product_area": "Lists & Segments"
-  },
-  "1766448340.907789": {
-    "summary": "Customer's campaign send to Yahoo/AOL (Verizon Media Group) recipients showed a delayed increase in sent counts (60 then 389 of ~900-1000); Alicya shared a profile screenshot to help review, consistent with known delivery reporting delays to these providers.",
-    "product_area": "Email Deliverability"
-  },
-  "1766373737.515899": {
-    "summary": "Alicya explained that 'Locale' is only set via Shopify data, then found the profile's location may have been updated to AU through opened/clicked email events, which could explain why it wasn't excluded from the EU/UK segment; she recommended escalating to backline to confirm the location history and flag a possible bug.",
-    "product_area": "Lists & Segments"
-  },
-  "1765939460.219739": {
-    "summary": "Alicya suggested clearing the product feed cache to fix outdated 'newest' items showing, and explained that Klaviyo's product feed always pulls the first image on a catalog item -- to show a different image, the workaround is to store the alternate image URL as custom metadata and reference it via catalog lookup, or build a fully custom feed using Klaviyo's dev blog guide.",
-    "product_area": "Catalogs & Feeds"
-  },
-  "1765857000.476709": {
-    "summary": "Laurel explained the giveaway DM feature currently only triggers off comments, not @mentions in DMs, and is still being refined; since the missing opt-in confirmation message couldn't be replicated, she recommended flagging it in the klaviyo-social-marketing channel and holding the ticket.",
-    "product_area": "K-Social"
-  },
-  "1765849472.882129": {
-    "summary": "The team found an existing bug ticket (BUGPORT-11919) for the unexplained '$source -154' value and recommended escalating to backline referencing it; a teammate speculated -154 might correspond to a Zenoti integration, though this was unconfirmed.",
-    "product_area": "Integrations"
-  },
-  "1765779541.799909": {
-    "summary": "Alicya pointed to the Magento 2 coupon-creation KB guide and advised granting the 'thin_klaviyo' user permission; when the error persisted after re-integration, she recommended getting a screenshot of the whitelisted IPs and escalating to Solutions Engineering.",
-    "product_area": "Integrations"
-  },
-  "1765776412.793979": {
-    "summary": "Cecilia found the webhook's API key had customized access and the content-type header contained stray quotes; she suggested fixing the content-type header and granting edit access to test, or copying the payload into a test account, while Alicya shared the correct 2024 vs 2025 API header formats to check against.",
-    "product_area": "Flows"
-  },
-  "1765256052.728079": {
-    "summary": "Alicya found two related bug tickets (BUGPORT-10942 and BUGPORT-11145) matching a profile that should have entered the flow but didn't, and recommended escalating to backline as a likely bug.",
-    "product_area": "Flows"
-  },
-  "1765254840.251759": {
-    "summary": "Alicya found that although the profile wasn't currently in the EU/UK segment, its location had been set to Germany around Dec 6-7 before being updated again by a new Placed Order event, which explains why it received the campaign at send time.",
-    "product_area": "Lists & Segments"
-  },
-  "1764298796.670769": {
-    "summary": "Alicya clarified that 'Previous RFM group' isn't an actual custom property but part of the RFM analytics tab on the profile page, so the segment results were accurate even though the property wasn't listed under profile properties.",
-    "product_area": "Lists & Segments"
+  "1764125791.679709": {
+    "product_area": "Flows",
+    "summary": "Cecilia and Stephanie identified a race condition where the 'Form Completed' event sometimes fires after the 'Subscribed to List' event, causing profiles to fail the flow's entry filter; they recommended switching the trigger filter to 'Form Submitted' instead of 'Form Completed', optionally with a short time delay."
   },
   "1764131418.560149": {
-    "summary": "Cecilia explained that since the integration had only been disabled and re-enabled (not fully reconnected), no historical sync ran automatically for that gap, and suggested manually triggering a sync for that date range via an inspector task.",
-    "product_area": "Integrations"
+    "product_area": "Integrations",
+    "summary": "Cecilia explained that since the integration had only been disabled and re-enabled (not fully reconnected), no historical sync ran automatically for that gap, and suggested manually triggering a sync for that date range via an inspector task."
   },
-  "1764125791.679709": {
-    "summary": "Cecilia and Stephanie identified a race condition where the 'Form Completed' event sometimes fires after the 'Subscribed to List' event, causing profiles to fail the flow's entry filter; they recommended switching the trigger filter to 'Form Submitted' instead of 'Form Completed', optionally with a short time delay.",
-    "product_area": "Flows"
+  "1764298796.670769": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya clarified that 'Previous RFM group' isn't an actual custom property but part of the RFM analytics tab on the profile page, so the segment results were accurate even though the property wasn't listed under profile properties."
+  },
+  "1765254840.251759": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya found that although the profile wasn't currently in the EU/UK segment, its location had been set to Germany around Dec 6-7 before being updated again by a new Placed Order event, which explains why it received the campaign at send time."
+  },
+  "1765256052.728079": {
+    "product_area": "Flows",
+    "summary": "Alicya found two related bug tickets (BUGPORT-10942 and BUGPORT-11145) matching a profile that should have entered the flow but didn't, and recommended escalating to backline as a likely bug."
+  },
+  "1765776412.793979": {
+    "product_area": "Flows",
+    "summary": "Cecilia found the webhook's API key had customized access and the content-type header contained stray quotes; she suggested fixing the content-type header and granting edit access to test, or copying the payload into a test account, while Alicya shared the correct 2024 vs 2025 API header formats to check against."
+  },
+  "1765779541.799909": {
+    "product_area": "Integrations",
+    "summary": "Alicya pointed to the Magento 2 coupon-creation KB guide and advised granting the 'thin_klaviyo' user permission; when the error persisted after re-integration, she recommended getting a screenshot of the whitelisted IPs and escalating to Solutions Engineering."
+  },
+  "1765849472.882129": {
+    "product_area": "Integrations",
+    "summary": "The team found an existing bug ticket (BUGPORT-11919) for the unexplained '$source -154' value and recommended escalating to backline referencing it; a teammate speculated -154 might correspond to a Zenoti integration, though this was unconfirmed."
+  },
+  "1765857000.476709": {
+    "product_area": "K-Social",
+    "summary": "Laurel explained the giveaway DM feature currently only triggers off comments, not @mentions in DMs, and is still being refined; since the missing opt-in confirmation message couldn't be replicated, she recommended flagging it in the klaviyo-social-marketing channel and holding the ticket."
+  },
+  "1765939460.219739": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya suggested clearing the product feed cache to fix outdated 'newest' items showing, and explained that Klaviyo's product feed always pulls the first image on a catalog item -- to show a different image, the workaround is to store the alternate image URL as custom metadata and reference it via catalog lookup, or build a fully custom feed using Klaviyo's dev blog guide."
+  },
+  "1766373737.515899": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya explained that 'Locale' is only set via Shopify data, then found the profile's location may have been updated to AU through opened/clicked email events, which could explain why it wasn't excluded from the EU/UK segment; she recommended escalating to backline to confirm the location history and flag a possible bug."
+  },
+  "1766448340.907789": {
+    "product_area": "Email Deliverability",
+    "summary": "Customer's campaign send to Yahoo/AOL (Verizon Media Group) recipients showed a delayed increase in sent counts (60 then 389 of ~900-1000); Alicya shared a profile screenshot to help review, consistent with known delivery reporting delays to these providers."
+  },
+  "1767053027.528819": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya concluded the suppressed-profiles count mismatch was likely a display glitch since no profiles actually appeared in the suppression list, and recommended escalating to backline."
+  },
+  "1767151194.397079": {
+    "product_area": "Campaigns",
+    "summary": "Alicya checked whether the missing recipients belonged to any of the campaign's excluded segments at send time but found no matches, so she recommended escalating to backline for further review."
+  },
+  "1767667368.914139": {
+    "product_area": "Templates",
+    "summary": "Alicya confirmed the broken images were from stale image URLs captured by past review-request events; once the product images were updated, new events like Viewed Product or Checkout Started served the correct image, and she suggested checking with the Reviews team and any product-management plugins for the two products that still showed old images."
+  },
+  "1767829542.143459": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya suggested removing the old Back in Stock snippet and adjusted the button's override setting to delete it, but advised that the remaining CSS positioning issue would need to be fixed on the customer's own site/theme."
+  },
+  "1768347712.743069": {
+    "product_area": "Integrations",
+    "summary": "Alicya and Chris suspected the WooCommerce Added to Cart tracking snippet had stopped injecting after a plugin change; deactivating and reinstalling the WooCommerce integration resolved it once the tracking snippet re-injected."
+  },
+  "1768350521.341249": {
+    "product_area": "Sign Up Forms",
+    "summary": "Alicya and Chris worked through whether removing the popup's targeting rules would make it reappear, tracing the issue to a recent change the customer made to stop showing the form to already-subscribed profiles."
+  },
+  "1768871633.113709": {
+    "product_area": "Integrations",
+    "summary": "Alicya walked through the Magento 2 401/404 sync error, advising the customer to whitelist all of Klaviyo's IP ranges and user agent and to check Magento integration permissions; since that didn't resolve it, she recommended escalating to Solutions Engineering."
+  },
+  "1768883664.679339": {
+    "product_area": "Integrations",
+    "summary": "Alicya advised the customer to use the Subscribe Profiles endpoint instead of Add Profiles to List, since the subscribe endpoint respects double opt-in and lets them specify which list confirmed profiles should be added to."
+  },
+  "1768974941.019099": {
+    "product_area": "Campaigns",
+    "summary": "Alicya suggested the campaign appearing outside the filter range was likely due to Smart Send Time delaying actual send by up to 4 hours past the scheduled date. She also noted this may be a UI bug where the timestamp shown doesn't clearly distinguish between scheduled vs. actual send time."
+  },
+  "1768976309.785279": {
+    "product_area": "Integrations",
+    "summary": ""
+  },
+  "1769038997.128369": {
+    "product_area": "Integrations",
+    "summary": "Alicya explained that coupon expiry must be set as a fixed date (not a relative period like '14 days'), but leaving it blank defaults to 1-year expiry from when the profile enters the flow. She suggested asking in #ask-apis about adding a relative expiry option."
+  },
+  "1769045943.456189": {
+    "product_area": "Integrations",
+    "summary": "Alicya suggested following the existing guide carefully and making sure the Save button is clicked, then asking the customer for a screen recording if the issue persists."
+  },
+  "1769473885.412669": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya identified that the product URL in the customer's custom catalog feed was syncing with the incorrect URL, and recommended they fix it in their feed. She also suggested looping in the CSM to alert them to the situation."
+  },
+  "1769474820.595639": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya walked through the options: either fix the custom catalog feed with developer help, or delete it entirely and resync using the Shopify catalog (noting this would affect Back-in-Stock). She recommended clarifying with the customer which path they prefer."
+  },
+  "1769483628.477399": {
+    "product_area": "Integrations",
+    "summary": "Alicya confirmed this is a standard IP whitelisting issue and directed the customer to follow the relevant steps."
+  },
+  "1770182578.446889": {
+    "product_area": "Campaigns",
+    "summary": "Alicya suggested escalating to the Billing team to get the customer a usage report, and noted that a custom report on API usage may also be possible."
+  },
+  "1770611442.897849": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya found the issue was caused by incorrect metric mapping \u2014 Placed Order was mapped to an individual item metric, so revenue couldn't be calculated. She recommended the customer remap their metrics following the predictive analysis guide."
+  },
+  "1770775816.050079": {
+    "product_area": "Integrations",
+    "summary": "Alicya suggested increasing the integration's connection_timeout setting (to around 50) to resolve the 503 timeout errors, then waiting until the expected sync completion date to see if it succeeds."
+  },
+  "1770957219.649239": {
+    "product_area": "Campaigns",
+    "summary": "The campaign clone freeze between AU and NZ accounts resolved itself without intervention \u2014 Ash confirmed it fixed with patience and linked related bug reports BUGPORT-10542 and BUGPORT-10575 for reference."
+  },
+  "1771285295.906489": {
+    "product_area": "Flows",
+    "summary": "Alicya found the account was still mapped to the old BigCommerce integration, causing the Price Drop flow to behave unexpectedly. She recommended removing the BigCommerce integration, purging the catalog, and resyncing solely from Shopify."
+  },
+  "1771303089.472369": {
+    "product_area": "Compliance",
+    "summary": "Alicya identified this as a Compliance team escalation, as the SHAFT policy rejection for cannabis-related businesses falls under their purview."
+  },
+  "1771802851.241019": {
+    "product_area": "Compliance",
+    "summary": "Ash explained that 'Incomplete' status on the SMS carrier form is expected \u2014 it stays that way until the carrier starts reviewing (Klaviyo can't update it). She also suggested escalating to the SMS Delivery & Compliance team."
+  },
+  "1771825118.648139": {
+    "product_area": "Sign Up Forms",
+    "summary": "Alicya narrowed down that the profiles missing the button custom property had submitted the sign-up form before a mid-February edit added the buttons/property to it, and recommended escalating to backline referencing three related known bugs about form versioning (BUGPORT-12676, BUGPORT-10679, BUGPORT-11321)."
+  },
+  "1771898791.537379": {
+    "product_area": "Campaigns",
+    "summary": "SMS testing request for Fitness Exchange to confirm SMS subscription; Alicya replied YES to confirm the subscription and the request was resolved."
+  },
+  "1771911635.633339": {
+    "product_area": "Accounts",
+    "summary": "Alicya suggested clearing cookies/cache for at least 7 days and having the customer log into Klaviyo directly rather than via Shopify. Stephanie provided context on the 'Session Expired' error behaviour."
+  },
+  "1772065678.891219": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya noted that edit access to the account is required to view the inactive segment \u2014 the customer should check if the profile appears there. Liam flagged a potentially related Jeremy ticket on the same issue."
+  },
+  "1772149611.788399": {
+    "product_area": "Flows",
+    "summary": "Cecilia corrected the Jinja template syntax, explained that `&nbsp;` is a space encoding (suggesting a Django filter to strip it), and recommended always verifying the event property name using the actual event in Klaviyo."
+  },
+  "1772757828.265509": {
+    "product_area": "Campaigns",
+    "summary": "Alicya suggested testing whether cloning the template with a description present resolves the issue, as it may be a known bug already tracked in Jira."
+  },
+  "1773108521.664789": {
+    "product_area": "Flows",
+    "summary": "Ray reviewed the flow re-entry criteria change and found it was likely tightened in late February, reducing eligible profiles. He suggested asking the customer if they recall any prior filter configuration changes."
+  },
+  "1773120963.358449": {
+    "product_area": "Integrations",
+    "summary": "Alicya found the account is on a free plan, which doesn't support custom objects. She suggested using the 'Transfer Ticket: Escalation to At Scale CSMs' macro to escalate and arrange a paid plan upgrade."
+  },
+  "1773121633.382599": {
+    "product_area": "Flows",
+    "summary": "Alicya suggested verifying that the Shopify collections being synced actually contain products, enabling membership sync, and waiting about 10 minutes to see if products appear before concluding there's an issue."
+  },
+  "1773189859.609619": {
+    "product_area": "Templates",
+    "summary": "Alicya provided the correct Jinja loop syntax \u2014 `{% for item in event.Items %}{% catalog item.SKU %}` \u2014 to dynamically look up catalog items, and recommended using a text block rather than an image block for better control of the layout."
+  },
+  "1773720809.859979": {
+    "product_area": "Campaigns",
+    "summary": "Stephanie investigated and found this may be expected behaviour \u2014 the Messages tab preview shows the translated version. She recommended confirming whether the customer actually received the email in French, and if so, submitting product feedback."
+  },
+  "1773724857.811679": {
+    "product_area": "Sign Up Forms",
+    "summary": "Ash noted the form was still in draft mode, which prevents proper CSS inspection. Alicya reminded the team that sign-up forms must be published live before troubleshooting CSS conflicts."
+  },
+  "1774222143.590809": {
+    "product_area": "Integrations",
+    "summary": "Alicya investigated and traced the unexpected subscription to Shopify \u2014 the profile was subscribing when they logged into Shopify and had email marketing opted in. She suggested sharing a Loom recording to show the customer the source."
+  },
+  "1774230512.729739": {
+    "product_area": "Compliance",
+    "summary": "Alicya clarified that WhatsApp opt-in is a separate subscription from SMS marketing, so testing WhatsApp consent requires its own separate test rather than assuming the SMS test covers both."
+  },
+  "1774233987.278309": {
+    "product_area": "Flows",
+    "summary": "Liam identified that events sent from test email addresses (e.g. @example.com) are silently dropped by the API with a 202 response. Alicya also found the developer was using the wrong API key (pointing to a staging account instead of production)."
+  },
+  "1774240725.616449": {
+    "product_area": "Sign Up Forms",
+    "summary": "SMS testing request for Aran Sweater Market to test sign-up form and SMS subscription; Alicya provided the confirmation code (129494) and a screenshot as proof."
+  },
+  "1774244972.761169": {
+    "product_area": "Integrations",
+    "summary": "Alicya suggested escalating to the Solutions Engineering team and referencing the related ticket that Chuck had previously helped with."
+  },
+  "1774311751.774059": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya noticed profiles unsubscribed as far back as 2023 were incorrectly included, and suggested escalating to Business Licensing as this looks like a potential bug."
+  },
+  "1774324015.586179": {
+    "product_area": "Integrations",
+    "summary": "Alicya recommended exporting the Mailchimp list to CSV before the account expires as the safest option, then doing a list import in Klaviyo to avoid triggering a sync that could cause issues."
+  },
+  "1774402171.267829": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya tested the BigCommerce catalog image URL lookup and found `image_full_url` was returning empty, suggesting the image isn't synced in the catalog. She recommended visiting the BL office hours or escalating to Business Licensing."
+  },
+  "1774407812.759589": {
+    "product_area": "Integrations",
+    "summary": "Alicya identified this as a hotlinking issue and suggested following the relevant section of the troubleshooting guide."
+  },
+  "1774414684.774139": {
+    "product_area": "Integrations",
+    "summary": "Alicya suggested having the customer create a new CSV with only a `PhoneNumber` column (no email column) to resolve the import error caused by the format mismatch."
+  },
+  "1774417545.312269": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya suggested clearing the product feed cache as a first troubleshooting step."
+  },
+  "1774491439.671959": {
+    "product_area": "Sign Up Forms",
+    "summary": "Alicya found the phone number wasn't importing correctly due to a space in the formatting, and noted the test profile appears to have been flagged."
+  },
+  "1774491940.644039": {
+    "product_area": "Integrations",
+    "summary": "Ray checked fulfilled order events and found `shipping_status` data was correct for recent profiles. He suggested asking the customer to confirm whether any recent UPS orders recorded the confirmed shipment event."
+  },
+  "1774842433.600779": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Ray found that `compare_at_price` is not available when using Klaviyo's localise-for-recipient feature, meaning the higher/compare price cannot be shown dynamically to AU recipients."
+  },
+  "1775001841.246449": {
+    "product_area": "Integrations",
+    "summary": "Cecilia spotted socket errors in the periodic syncs and flagged it for Dmytro. Dmytro suggested increasing the `connection_timeout` setting to 90 to resolve the sync failures."
+  },
+  "1775521207.769709": {
+    "product_area": "Accounts",
+    "summary": "SMS testing request for Xpeed Fitness to test Customer Hub Sign-In Consent; Cecilia Lin checked and found no test messages had come through from this brand yet."
+  },
+  "1775618241.227199": {
+    "product_area": "Flows",
+    "summary": "Cecilia identified SMS quiet hours as the cause \u2014 the account's quiet hours end at 11am, which delayed the flow messages by 30 minutes. She shared a screenshot of the account's quiet hours settings to confirm."
+  },
+  "1775784892.312329": {
+    "product_area": "Templates",
+    "summary": "Ray diagnosed the issue as the customer's strict referrer policy settings blocking the custom font from loading. He recommended having their developers review and adjust the CORS/referrer policy settings."
+  },
+  "1775796232.617289": {
+    "product_area": "Flows",
+    "summary": "Cecilia identified a race condition \u2014 the flow trigger fires on Shopify Placed Order, but the conditional splits check against a custom Placed Order metric that wasn't recorded yet. She suggested adding a time delay to account for the gap."
+  },
+  "1776210438.411569": {
+    "product_area": "Integrations",
+    "summary": "Dmytro confirmed PrestaShop v9.0 is not currently supported by Klaviyo. He suggested posting in the docs channel to get the help article updated, and submitting a feature request for Presta 9 support."
+  },
+  "1776229511.049799": {
+    "product_area": "Integrations",
+    "summary": "The data-privacy-deletion-jobs endpoint requires a private API key and not OAuth Bearer auth \u2014 though the customer switched to a private key the 401 persisted. Dmytro linked to a Slack thread (Apr 16) that appears to contain the follow-up resolution."
+  },
+  "1776646984.797019": {
+    "product_area": "Sign Up Forms",
+    "summary": "Jeremy suggested the duplicate Shopify integration as a likely cause. Alicya investigated and found the profile was subscribed via Shopify login (triggered by Shopify's webhook), and that a second integration account also had this profile."
+  },
+  "1776655799.045499": {
+    "product_area": "Templates",
+    "summary": "Alicya suggested not going too deep on the HTML troubleshooting \u2014 instead, refer the customer to Klaviyo's product block extension guide or use AI to help achieve the layout, with the vertical display guide as a fallback."
+  },
+  "1776657268.544969": {
+    "product_area": "Templates",
+    "summary": "Alicya noted the customer is using the correct `item.productVariantPlatformId` variable but the Shopify catalog may not support dynamic variant image lookups. She suggested trying the approach from the related method guide, and asking in #ask-apis if it's achievable."
+  },
+  "1776732940.057439": {
+    "product_area": "Templates",
+    "summary": "Alicya asked about display rules on the template sections. Liam found the section had display logic set on it that was preventing it from showing, which was the root cause."
+  },
+  "1776991611.255499": {
+    "product_area": "Integrations",
+    "summary": "Dmytro suggested pointing the customer to Cloudflare's official WAF custom rules guide for hotlink protection, and if their implementation is still causing issues, to contact Cloudflare support directly."
+  },
+  "1776996861.013519": {
+    "product_area": "Campaigns",
+    "summary": "Ellie confirmed based on the help article that UTM-tracked links and `?link=` links should be tracked separately. She suggested testing with the `?link=` parameter format to verify, and noted it did work when tested."
+  },
+  "1777353168.358689": {
+    "product_area": "Accounts",
+    "summary": ""
+  },
+  "1777354666.781209": {
+    "product_area": "Integrations",
+    "summary": ""
+  },
+  "1777440078.325399": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya flagged that profiles going from 'Subscribed' to 'Never Subscribed' is unusual and may indicate a bug. She suggested escalating to Business Licensing for further investigation."
+  },
+  "1777875507.317419": {
+    "product_area": "Campaigns",
+    "summary": "Liam identified the SMS link was broken because the customer's URL contained a duplicated 'https//' prefix, causing the link tracking test to fail."
+  },
+  "1778202751.722479": {
+    "product_area": "Integrations",
+    "summary": "Alicya found an SA wiki page confirming custom Started Checkout events can work with GTM, and advised gathering more details from the customer (code snippets, exact setup) before escalating to the SE team \u2014 including the wiki doc in the escalation note for context."
+  },
+  "1778214011.625609": {
+    "product_area": "Flows",
+    "summary": "SMS testing request for SHOPLUNAB to test subscription to an SMS marketing flow; Alexander Wearne picked it up (Alicya was on lunch) and resolved the request."
+  },
+  "1778218267.090159": {
+    "product_area": "K-Service",
+    "summary": "Alicya advised following the internal KB troubleshooting steps for 'Failed' vs 'Verified' status, and suggested temporarily changing the forwarding destination to reset the connection. If it still shows Failed after that, escalate to the BL team."
+  },
+  "1778222180.942259": {
+    "product_area": "Campaigns",
+    "summary": "SMS testing request for Sparkle In Pink to confirm a test campaign send; Alicya sent a screenshot confirming the message sent successfully, no further action needed."
+  },
+  "1778559630.800999": {
+    "product_area": "Flows",
+    "summary": "Alicya noted she had a similar delay issue that gradually improved, and that 3 minutes is still within the acceptable grace period per an existing Slack thread. She recommended sending the customer David's example response about expected flow send times."
+  },
+  "1778639133.396599": {
+    "product_area": "Campaigns",
+    "summary": "SMS testing request for Fat Beats; Alicya provided the verification code (808664) so the requester could confirm the test message was received."
+  },
+  "1778718605.208799": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya created a test segment and noted it can take up to 20 minutes to populate per the KB. If it still doesn't work, she linked a known Linear issue (GPLAT-425) and advised asking the SA (Bella) to follow up directly in the Linear ticket to flag urgency, since the bug is in backlog with no ETA."
+  },
+  "1779063558.846779": {
+    "product_area": "Integrations",
+    "summary": "Alicya tested on desktop and mobile but couldn't replicate the issue, and noted that incognito browsing should always trigger fresh cookie acceptance. She advised telling the customer the issue is likely on their end since it can't be replicated, and to escalate to the BL team."
+  },
+  "1779761442.837679": {
+    "product_area": "K-Social",
+    "summary": "Alicya suggested verifying the customer has Admin/Editor/Full Control on their Facebook/Meta assets for the Instagram Business account, and asked Meher to collect screenshots of both Facebook Page Advanced Messaging settings (Connected Apps > Klaviyo-IG) and Instagram Website Permissions to confirm all required permissions are enabled. If the issue persists after confirming permissions, the recommendation was to link the similar ticket and escalate to BL."
+  },
+  "1779847010.701629": {
+    "product_area": "Accounts",
+    "summary": "Alicya checked Splunk and confirmed the bulk suppression job was accepted but not yet processed; she suggested waiting a few hours to see if profiles update, and if still not suppressed, to comment on the related Linear ticket ICM-599. Ash later confirmed profiles were still not suppressed after several hours and added the ticket to Linear."
+  },
+  "1780382399.932479": {
+    "product_area": "Flows",
+    "summary": "Alicya found many recent skips in the flow evaluation due to 'No recipients', visible even on the day of the query. She suggested asking the customer to check their internal alert recipient details (consent status), and linked Linear bug FP-1817 as a likely cause if profiles show a green checkmark but still aren't receiving alerts."
+  },
+  "1780385147.567209": {
+    "product_area": "Catalogs & Feeds",
+    "summary": "Alicya confirmed the same 500 internal server error in the customer's account (Back in Stock Reports tab) but could not replicate it in test accounts. She recommended escalating to Business Licensing."
+  },
+  "1780540883.378139": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya clarified that 'contains text' conditions are not necessarily advanced operators, and recommended escalating to Business Licensing for confirmation while also requesting an update to the internal KB article on cross-account segment cloning."
+  },
+  "1780981253.515349": {
+    "product_area": "Campaigns",
+    "summary": "Alicya checked the Staffside campaign view and confirmed variation B was never sent, then recommended escalating to Business Licensing as it was unclear whether the issue stemmed from a platform incident or the linked UI bug (EXP-392)."
+  },
+  "1781058058.049269": {
+    "product_area": "Campaigns",
+    "summary": "Alicya suggested the issue could be Gmail clipping or related to the new template editor migration, and advised that since the issue could not be replicated on their end, Meher should reply using the Gmail clipping angle."
+  },
+  "1781486210.101369": {
+    "product_area": "Templates",
+    "summary": "Alicya explained that simply seeing their name pre-filled in the preview pane doesn't mean their profile is selected \u2014 the user needs to actively retype their email address and select it from the dropdown. She recommended Ash create a Loom to demonstrate the correct preview steps to the customer."
+  },
+  "1781489278.987759": {
+    "product_area": "Flows",
+    "summary": "Alicya identified the duplicate 'Viewed Product' events as coming from two sources \u2014 one client-side via Klaviyo and one server-side via a third-party app (WeTracked). She suggested the customer contact the third-party app to remove their tracking script if they want to eliminate the duplicate events from their flow."
+  },
+  "1782196228.732549": {
+    "product_area": "Flows",
+    "summary": "Alicya identified the 500 errors from Funnel's GET /api/flows/{id}/flow-actions/ are tied to a known bug (FLOW-660) where emails not being set up causes the endpoint to return 500 instead of returning other flow actions. Chris was advised to comment on the Linear ticket that this customer is also affected."
+  },
+  "1782276376.540469": {
+    "product_area": "Integrations",
+    "summary": "Alicya suggested using PostmanLite system_status to check the WooCommerce integration URL, which appeared to be pointing to the old .wp1.sh staging site rather than the new .co.uk domain. The recommendation was to advise the customer about the 526 error and suggest removing and re-integrating to fix the URL mismatch."
   },
   "1782959001.821759": {
-    "summary": "Alicya confirmed the profile should have qualified for Email 2 after being added via Add Past Profiles, but no profiles were queued for emails 2 or 3. She identified this as impacted by known bug FP-1934 (Flows 2.0 metric-triggered flow not adding past profiles) and advised Meher to escalate to Business Licensing referencing that profiles aren't showing where expected.",
-    "product_area": "Flows"
+    "product_area": "Flows",
+    "summary": "Alicya confirmed the profile should have qualified for Email 2 after being added via Add Past Profiles, but no profiles were queued for emails 2 or 3. She identified this as impacted by known bug FP-1934 (Flows 2.0 metric-triggered flow not adding past profiles) and advised Meher to escalate to Business Licensing referencing that profiles aren't showing where expected."
   },
   "1783917859.999319": {
-    "summary": "Claude-assisted investigation traced the crash to the onsite JS base loader pulling all onsite chunks (atlas, forms, telemetry, product recommendations) from a build-preview/commit path instead of a normal production path; a customerHub config/feature-flag object was never initialized in that build, causing the uncaught 'customerHubOnboarded' error. Recommendation was to escalate to the K-Service engineering team to confirm whether this is expected behavior or a bug.",
-    "product_area": "K-Service"
+    "product_area": "K-Service",
+    "summary": "Claude-assisted investigation traced the crash to the onsite JS base loader pulling all onsite chunks (atlas, forms, telemetry, product recommendations) from a build-preview/commit path instead of a normal production path; a customerHub config/feature-flag object was never initialized in that build, causing the uncaught 'customerHubOnboarded' error. Recommendation was to escalate to the K-Service engineering team to confirm whether this is expected behavior or a bug."
   },
   "1784005646.038979": {
-    "summary": "Checked via Staffside whether each account's flow was on Flows V1 or V2 \u2014 AU was on V1 (has Custom Actions) while NZ was on V2 (Custom Actions not yet supported until July). Advised asking in the referenced Slack channel if custom actions could be enabled for the NZ (V2) account rather than sending the same explanation used in a prior case.",
-    "product_area": "Flows"
+    "product_area": "Flows",
+    "summary": "Checked via Staffside whether each account's flow was on Flows V1 or V2 \u2014 AU was on V1 (has Custom Actions) while NZ was on V2 (Custom Actions not yet supported until July). Advised asking in the referenced Slack channel if custom actions could be enabled for the NZ (V2) account rather than sending the same explanation used in a prior case."
   },
   "1784076518.007999": {
-    "summary": "Alicya identified this was likely the known FP-2122 bug (profile stuck in executing state). Chris planned to ask on the Linear ticket whether the affected profile's flow actions could be pushed through or replayed.",
-    "product_area": "Flows"
+    "product_area": "Flows",
+    "summary": "Alicya identified this was likely the known FP-2122 bug (profile stuck in executing state). Chris planned to ask on the Linear ticket whether the affected profile's flow actions could be pushed through or replayed."
   },
   "1784601823.132889": {
-    "summary": "Root cause was that the segment definition was changed (grew from ~1.6k to 27k+ profiles) after the campaign was scheduled; since RAST was disabled, the campaign only sent to the segment snapshot taken at schedule time. Recommended verifying timing via the segment growth report and account activity logs, and enabling RAST going forward if audience updates made after scheduling should be captured in the send.",
-    "product_area": "Campaigns"
+    "product_area": "Campaigns",
+    "summary": "Root cause was that the segment definition was changed (grew from ~1.6k to 27k+ profiles) after the campaign was scheduled; since RAST was disabled, the campaign only sent to the segment snapshot taken at schedule time. Recommended verifying timing via the segment growth report and account activity logs, and enabling RAST going forward if audience updates made after scheduling should be captured in the send."
   },
   "1785215945.575849": {
-    "summary": "The thread confirmed the bug is real (some custom object property mappings save successfully while others silently fail, shown highlighted in a screenshot), but no fix or workaround was shared in the thread beyond acknowledging the issue.",
-    "product_area": "Integrations"
+    "product_area": "Integrations",
+    "summary": "The thread confirmed the bug is real (some custom object property mappings save successfully while others silently fail, shown highlighted in a screenshot), but no fix or workaround was shared in the thread beyond acknowledging the issue."
   },
   "1785292726.060769": {
-    "summary": "Team discussed the 403 periodic sync error and confirmed the customer's Meta permissions and TOS acceptance looked fine, so no clear fix was found in-thread. Ash shared that a similar case was resolved by manually restarting the periodic sync via the KB steps, and the team agreed to watch how SE handles this ticket before treating that as a standard practice; ultimately escalated to SE.",
-    "product_area": "Integrations"
-  },
-  "1785481140.910739": {
-    "summary": "Alicya used Claude to diagnose that the 422 came from a stale label_color value left on a Social Links block after show_labels was toggled off, which the API validator now rejects on read. She confirmed this looks like a backend/API bug (422 isn't even a documented status code) and told Ash to escalate to SE, flagging that the customer is using the MCP.",
-    "product_area": "Templates"
+    "product_area": "Integrations",
+    "summary": "Team discussed the 403 periodic sync error and confirmed the customer's Meta permissions and TOS acceptance looked fine, so no clear fix was found in-thread. Ash shared that a similar case was resolved by manually restarting the periodic sync via the KB steps, and the team agreed to watch how SE handles this ticket before treating that as a standard practice; ultimately escalated to SE."
   },
   "1785379305.983709": {
-    "summary": "Alicya confirmed this matches the known FP-3146 bug (flow A/B test not recording deliveries correctly), the same pattern she'd seen reported by the CNX team, which explains why flow analytics under-report despite messages actually sending.",
-    "product_area": "Flows"
+    "product_area": "Flows",
+    "summary": "Alicya confirmed this matches the known FP-3146 bug (flow A/B test not recording deliveries correctly), the same pattern she'd seen reported by the CNX team, which explains why flow analytics under-report despite messages actually sending."
+  },
+  "1785481140.910739": {
+    "product_area": "Templates",
+    "summary": "Alicya used Claude to diagnose that the 422 came from a stale label_color value left on a Social Links block after show_labels was toggled off, which the API validator now rejects on read. She confirmed this looks like a backend/API bug (422 isn't even a documented status code) and told Ash to escalate to SE, flagging that the customer is using the MCP."
   },
   "1785717075.904029": {
-    "summary": "The team found several prior tickets with the same Shopware plugin bug (repeated DOI resends caused by historical_import:false on every call). A fix exists in plugin v1.14.3/1.14.4, so they advised waiting for the customer to update; if the issue persists after updating, the plan is to ask in the #ask-shopware channel for further help.",
-    "product_area": "Integrations"
+    "product_area": "Integrations",
+    "summary": "The team found several prior tickets with the same Shopware plugin bug (repeated DOI resends caused by historical_import:false on every call). A fix exists in plugin v1.14.3/1.14.4, so they advised waiting for the customer to update; if the issue persists after updating, the plan is to ask in the #ask-shopware channel for further help."
   },
   "1785819666.456059": {
-    "summary": "Alicya confirmed the missing blocks issue looked unusual/unexpected, but no specific fix or next step had been given yet in the thread.",
-    "product_area": "Templates"
+    "product_area": "Templates",
+    "summary": "Alicya confirmed the missing blocks issue looked unusual/unexpected, but no specific fix or next step had been given yet in the thread."
+  },
+  "1786319001.592789": {
+    "product_area": "Flows",
+    "summary": "QUEUED_FROM_MANUAL means the profile was released from manual review into the sending queue, but that doesn't confirm the message actually sent. The profile had been stuck in that state since Friday with nothing recorded on the webhook side, so this was identified as a likely flow bug and escalated to Backline."
   }
 }
