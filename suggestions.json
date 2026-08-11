@@ -430,5 +430,9 @@
   "1786319001.592789": {
     "product_area": "Flows",
     "summary": "QUEUED_FROM_MANUAL means the profile was released from manual review into the sending queue, but that doesn't confirm the message actually sent. The profile had been stuck in that state since Friday with nothing recorded on the webhook side, so this was identified as a likely flow bug and escalated to Backline."
+  },
+  "1786336721.966559": {
+    "product_area": "Flows",
+    "summary": "Confirmed the SKU's stock had not been resynced from BigCommerce since it went out of stock, matching a known Linear bug (IEC-987) where BigCommerce webhook-triggered variant syncs can return stale cached inventory. Advised escalating to the SE team since it appears linked to an existing ZD ticket on the same issue."
   }
 }
