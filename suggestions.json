@@ -434,5 +434,9 @@
   "1786336721.966559": {
     "product_area": "Flows",
     "summary": "Confirmed the SKU's stock had not been resynced from BigCommerce since it went out of stock, matching a known Linear bug (IEC-987) where BigCommerce webhook-triggered variant syncs can return stale cached inventory. Advised escalating to the SE team since it appears linked to an existing ZD ticket on the same issue."
+  },
+  "1786674460.805109": {
+    "product_area": "Templates",
+    "summary": "Alicya and Ash could not replicate the issue themselves, but since two different customers reported the same intermittent Instagram logo replacement bug, they agreed to escalate to Backline and linked a similar Linear issue (EDIT-1347: Received Image within header of a campaign send instead of Text)."
   }
 }
