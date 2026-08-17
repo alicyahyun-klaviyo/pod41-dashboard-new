@@ -292,7 +292,7 @@
     "summary": "Ellie confirmed based on the help article that UTM-tracked links and `?link=` links should be tracked separately. She suggested testing with the `?link=` parameter format to verify, and noted it did work when tested."
   },
   "1777353168.358689": {
-    "product_area": "Accounts",
+    "product_area": "Integrations",
     "summary": ""
   },
   "1777354666.781209": {
@@ -438,5 +438,9 @@
   "1786674460.805109": {
     "product_area": "Templates",
     "summary": "Alicya and Ash could not replicate the issue themselves, but since two different customers reported the same intermittent Instagram logo replacement bug, they agreed to escalate to Backline and linked a similar Linear issue (EDIT-1347: Received Image within header of a campaign send instead of Text)."
+  },
+  "1786932704.484179": {
+    "summary": "Team confirmed this is expected: the billing page's active profile count lags behind actual suppressions by up to a few hours, especially after a large suppression. Advised directing the customer to check the Profiles tab instead of the billing page while it catches up.",
+    "product_area": "Accounts"
   }
 }
