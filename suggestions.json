@@ -442,5 +442,65 @@
   "1786932704.484179": {
     "summary": "Team confirmed this is expected: the billing page's active profile count lags behind actual suppressions by up to a few hours, especially after a large suppression. Advised directing the customer to check the Profiles tab instead of the billing page while it catches up.",
     "product_area": "Accounts"
+  },
+  "1787015134.291209": {
+    "product_area": "Flows",
+    "summary": "SMS testing request for Playhouse MD to test a keyword-triggered flow response ('AMAZON' keyword); Cecilia Lin picked up and handled the test."
+  },
+  "1786603691.588809": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya searched Splunk for the 'Manually Suppressed - Profile Maintenance' reason using several query combinations but found no matching logs. She suggested escalating to Backline and requesting the internal KB be updated to clarify what 'profile_modification' suppression actually means."
+  },
+  "1786598989.395419": {
+    "product_area": "Lists & Segments",
+    "summary": "Alicya explained a profile can be flagged for Subscription/Bot Protection even if it looks legitimate — e.g. rapid sign-ups across other Klaviyo accounts, or repeated form submissions from the same IP with different emails. She pointed Meher to the KB's steps for safely unsuppressing profiles believed to be legitimate."
+  },
+  "1786410597.717439": {
+    "product_area": "Flows",
+    "summary": "Alicya ran the Chronosphere queries for both the trigger-into and read-out-of Aggatha steps to check why the profile didn't enter the segment-triggered flow."
+  },
+  "1786408152.460959": {
+    "product_area": "Flows",
+    "summary": "Alicya ran the Splunk query and found roughly 219K coupon creation events (sorted newest to oldest), giving Meher visibility into how many codes had actually been generated."
+  },
+  "1785724648.639879": {
+    "product_area": "Flows",
+    "summary": "Alicya checked the Chronosphere logs for the date-based flow queue and found nothing, confirming the profile was never queued for the flow."
+  },
+  "1785483694.221359": {
+    "product_area": "Lists & Segments",
+    "summary": "Alexander Wearne ran the Splunk query over a 2-day window and confirmed the profile was not flagged by subscription protection."
+  },
+  "1784867157.802459": {
+    "product_area": "Lists & Segments",
+    "summary": ""
+  },
+  "1784269256.029929": {
+    "product_area": "Flows",
+    "summary": "After correcting the account ID, Alicya found the webhook evaluation was marked WEBHOOK_FAILING_TOO_MUCH — Klaviyo retries webhook sends up to 17 times over ~24 hours before giving up. She suggested having the customer retry the webhook send and escalating if it fails again."
+  },
+  "1783403105.371939": {
+    "product_area": "Flows",
+    "summary": "Alicya ran the trigger-filter and profile-filter Chronosphere queries; the team concluded this was likely a race condition between the subscribe event and the flow trigger."
+  },
+  "1782195544.970529": {
+    "product_area": "Flows",
+    "summary": "Alicya found the profile actually did enter the flow, but the custom property was added manually via the Profile Custom Properties UI 10 days later (confirmed by SE), not by the flow itself. She flagged a related Linear bug (FP-2130, currently scoped to add-past-profiles) and asked for a Flow Debugger screenshot to send to Backline for this similar case."
+  },
+  "1781830914.394359": {
+    "product_area": "Integrations",
+    "summary": "Alicya pulled the Splunk logs for the requested date range to confirm the Google Ads audience sync activity. Alexander noted the query URL can be copied directly from the query builder dropdown even without direct Splunk access, for future reference."
+  },
+  "1781576738.654869": {
+    "product_area": "Flows",
+    "summary": "Ash shared the Chronosphere log link for the date-triggered flow check; Alicya reviewed it but did not leave a written conclusion in the thread."
+  },
+  "1780552798.267769": {
+    "product_area": "Flows",
+    "summary": "This was a joke/test submission via the new /splunkhelp form ('what is the meaning of life') rather than a real support question — the team responded with laughter and no genuine query was run."
+  },
+  "1780549422.565869": {
+    "product_area": "Lists & Segments",
+    "summary": ""
   }
 }
