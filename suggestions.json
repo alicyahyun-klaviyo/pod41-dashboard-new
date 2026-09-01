@@ -506,5 +506,9 @@
   "1787628230.916639": {
     "summary": "Inbound SMS replies from Gorgias were not being routed back through Klaviyo's toll-free number to customers even though inbound messages synced correctly; the behavior matched a previously-cancelled Linear ticket (VEX-269) describing the same issue, and the thread ended without a confirmed fix.",
     "product_area": "K-Service"
+  },
+  "1788151655.577159": {
+    "summary": "Confirmed the localized product URL/pricing in the dynamic product feed comes from the Shopify Markets integration itself — Smart Translations is not required, since the customer's product titles were already translated separately.",
+    "product_area": "Catalogs & Feeds"
   }
 }
