@@ -510,5 +510,13 @@
   "1788151655.577159": {
     "summary": "Confirmed the localized product URL/pricing in the dynamic product feed comes from the Shopify Markets integration itself — Smart Translations is not required, since the customer's product titles were already translated separately.",
     "product_area": "Catalogs & Feeds"
+  },
+  "1788244155.884669": {
+    "summary": "Alicya traced the reported 503s to the client/profiles (identify) and onsite/track-analytics calls rather than the client/subscriptions (subscribe) endpoint, and since the team couldn't reproduce the issue and the customer had no screenshot or HAR file confirming the failure, they escalated the ticket to Backline as a sign-up form issue.",
+    "product_area": "Sign Up Forms"
+  },
+  "1788232289.890459": {
+    "summary": "Alicya and Chris found the form also couldn't be cloned and had a buggy image-block deletion, pointing to a broader form-editor bug rather than a config issue, so they escalated to Backline.",
+    "product_area": "Sign Up Forms"
   }
 }
