@@ -113,7 +113,7 @@
   },
   "1770611442.897849": {
     "product_area": "Lists & Segments",
-    "summary": "Alicya found the issue was caused by incorrect metric mapping \u2014 Placed Order was mapped to an individual item metric, so revenue couldn't be calculated. She recommended the customer remap their metrics following the predictive analysis guide."
+    "summary": "Alicya found the issue was caused by incorrect metric mapping — Placed Order was mapped to an individual item metric, so revenue couldn't be calculated. She recommended the customer remap their metrics following the predictive analysis guide."
   },
   "1770775816.050079": {
     "product_area": "Integrations",
@@ -121,7 +121,7 @@
   },
   "1770957219.649239": {
     "product_area": "Campaigns",
-    "summary": "The campaign clone freeze between AU and NZ accounts resolved itself without intervention \u2014 Ash confirmed it fixed with patience and linked related bug reports BUGPORT-10542 and BUGPORT-10575 for reference."
+    "summary": "The campaign clone freeze between AU and NZ accounts resolved itself without intervention — Ash confirmed it fixed with patience and linked related bug reports BUGPORT-10542 and BUGPORT-10575 for reference."
   },
   "1771285295.906489": {
     "product_area": "Flows",
@@ -133,7 +133,7 @@
   },
   "1771802851.241019": {
     "product_area": "Compliance",
-    "summary": "Ash explained that 'Incomplete' status on the SMS carrier form is expected \u2014 it stays that way until the carrier starts reviewing (Klaviyo can't update it). She also suggested escalating to the SMS Delivery & Compliance team."
+    "summary": "Ash explained that 'Incomplete' status on the SMS carrier form is expected — it stays that way until the carrier starts reviewing (Klaviyo can't update it). She also suggested escalating to the SMS Delivery & Compliance team."
   },
   "1771825118.648139": {
     "product_area": "Sign Up Forms",
@@ -149,7 +149,7 @@
   },
   "1772065678.891219": {
     "product_area": "Lists & Segments",
-    "summary": "Alicya noted that edit access to the account is required to view the inactive segment \u2014 the customer should check if the profile appears there. Liam flagged a potentially related Jeremy ticket on the same issue."
+    "summary": "Alicya noted that edit access to the account is required to view the inactive segment — the customer should check if the profile appears there. Liam flagged a potentially related Jeremy ticket on the same issue."
   },
   "1772149611.788399": {
     "product_area": "Flows",
@@ -173,11 +173,11 @@
   },
   "1773189859.609619": {
     "product_area": "Templates",
-    "summary": "Alicya provided the correct Jinja loop syntax \u2014 `{% for item in event.Items %}{% catalog item.SKU %}` \u2014 to dynamically look up catalog items, and recommended using a text block rather than an image block for better control of the layout."
+    "summary": "Alicya provided the correct Jinja loop syntax — `{% for item in event.Items %}{% catalog item.SKU %}` — to dynamically look up catalog items, and recommended using a text block rather than an image block for better control of the layout."
   },
   "1773720809.859979": {
     "product_area": "Campaigns",
-    "summary": "Stephanie investigated and found this may be expected behaviour \u2014 the Messages tab preview shows the translated version. She recommended confirming whether the customer actually received the email in French, and if so, submitting product feedback."
+    "summary": "Stephanie investigated and found this may be expected behaviour — the Messages tab preview shows the translated version. She recommended confirming whether the customer actually received the email in French, and if so, submitting product feedback."
   },
   "1773724857.811679": {
     "product_area": "Sign Up Forms",
@@ -185,7 +185,7 @@
   },
   "1774222143.590809": {
     "product_area": "Integrations",
-    "summary": "Alicya investigated and traced the unexpected subscription to Shopify \u2014 the profile was subscribing when they logged into Shopify and had email marketing opted in. She suggested sharing a Loom recording to show the customer the source."
+    "summary": "Alicya investigated and traced the unexpected subscription to Shopify — the profile was subscribing when they logged into Shopify and had email marketing opted in. She suggested sharing a Loom recording to show the customer the source."
   },
   "1774230512.729739": {
     "product_area": "Compliance",
@@ -249,7 +249,7 @@
   },
   "1775618241.227199": {
     "product_area": "Flows",
-    "summary": "Cecilia identified SMS quiet hours as the cause \u2014 the account's quiet hours end at 11am, which delayed the flow messages by 30 minutes. She shared a screenshot of the account's quiet hours settings to confirm."
+    "summary": "Cecilia identified SMS quiet hours as the cause — the account's quiet hours end at 11am, which delayed the flow messages by 30 minutes. She shared a screenshot of the account's quiet hours settings to confirm."
   },
   "1775784892.312329": {
     "product_area": "Templates",
@@ -257,7 +257,7 @@
   },
   "1775796232.617289": {
     "product_area": "Flows",
-    "summary": "Cecilia identified a race condition \u2014 the flow trigger fires on Shopify Placed Order, but the conditional splits check against a custom Placed Order metric that wasn't recorded yet. She suggested adding a time delay to account for the gap."
+    "summary": "Cecilia identified a race condition — the flow trigger fires on Shopify Placed Order, but the conditional splits check against a custom Placed Order metric that wasn't recorded yet. She suggested adding a time delay to account for the gap."
   },
   "1776210438.411569": {
     "product_area": "Integrations",
@@ -265,7 +265,7 @@
   },
   "1776229511.049799": {
     "product_area": "Integrations",
-    "summary": "The data-privacy-deletion-jobs endpoint requires a private API key and not OAuth Bearer auth \u2014 though the customer switched to a private key the 401 persisted. Dmytro linked to a Slack thread (Apr 16) that appears to contain the follow-up resolution."
+    "summary": "The data-privacy-deletion-jobs endpoint requires a private API key and not OAuth Bearer auth — though the customer switched to a private key the 401 persisted. Dmytro linked to a Slack thread (Apr 16) that appears to contain the follow-up resolution."
   },
   "1776646984.797019": {
     "product_area": "Sign Up Forms",
@@ -273,7 +273,7 @@
   },
   "1776655799.045499": {
     "product_area": "Templates",
-    "summary": "Alicya suggested not going too deep on the HTML troubleshooting \u2014 instead, refer the customer to Klaviyo's product block extension guide or use AI to help achieve the layout, with the vertical display guide as a fallback."
+    "summary": "Alicya suggested not going too deep on the HTML troubleshooting — instead, refer the customer to Klaviyo's product block extension guide or use AI to help achieve the layout, with the vertical display guide as a fallback."
   },
   "1776657268.544969": {
     "product_area": "Templates",
@@ -309,7 +309,7 @@
   },
   "1778202751.722479": {
     "product_area": "Integrations",
-    "summary": "Alicya found an SA wiki page confirming custom Started Checkout events can work with GTM, and advised gathering more details from the customer (code snippets, exact setup) before escalating to the SE team \u2014 including the wiki doc in the escalation note for context."
+    "summary": "Alicya found an SA wiki page confirming custom Started Checkout events can work with GTM, and advised gathering more details from the customer (code snippets, exact setup) before escalating to the SE team — including the wiki doc in the escalation note for context."
   },
   "1778214011.625609": {
     "product_area": "Flows",
@@ -369,11 +369,11 @@
   },
   "1781486210.101369": {
     "product_area": "Templates",
-    "summary": "Alicya explained that simply seeing their name pre-filled in the preview pane doesn't mean their profile is selected \u2014 the user needs to actively retype their email address and select it from the dropdown. She recommended Ash create a Loom to demonstrate the correct preview steps to the customer."
+    "summary": "Alicya explained that simply seeing their name pre-filled in the preview pane doesn't mean their profile is selected — the user needs to actively retype their email address and select it from the dropdown. She recommended Ash create a Loom to demonstrate the correct preview steps to the customer."
   },
   "1781489278.987759": {
     "product_area": "Flows",
-    "summary": "Alicya identified the duplicate 'Viewed Product' events as coming from two sources \u2014 one client-side via Klaviyo and one server-side via a third-party app (WeTracked). She suggested the customer contact the third-party app to remove their tracking script if they want to eliminate the duplicate events from their flow."
+    "summary": "Alicya identified the duplicate 'Viewed Product' events as coming from two sources — one client-side via Klaviyo and one server-side via a third-party app (WeTracked). She suggested the customer contact the third-party app to remove their tracking script if they want to eliminate the duplicate events from their flow."
   },
   "1782196228.732549": {
     "product_area": "Flows",
@@ -393,7 +393,7 @@
   },
   "1784005646.038979": {
     "product_area": "Flows",
-    "summary": "Checked via Staffside whether each account's flow was on Flows V1 or V2 \u2014 AU was on V1 (has Custom Actions) while NZ was on V2 (Custom Actions not yet supported until July). Advised asking in the referenced Slack channel if custom actions could be enabled for the NZ (V2) account rather than sending the same explanation used in a prior case."
+    "summary": "Checked via Staffside whether each account's flow was on Flows V1 or V2 — AU was on V1 (has Custom Actions) while NZ was on V2 (Custom Actions not yet supported until July). Advised asking in the referenced Slack channel if custom actions could be enabled for the NZ (V2) account rather than sending the same explanation used in a prior case."
   },
   "1784076518.007999": {
     "product_area": "Flows",
@@ -453,7 +453,7 @@
   },
   "1786598989.395419": {
     "product_area": "Lists & Segments",
-    "summary": "Alicya explained a profile can be flagged for Subscription/Bot Protection even if it looks legitimate \u2014 e.g. rapid sign-ups across other Klaviyo accounts, or repeated form submissions from the same IP with different emails. She pointed Meher to the KB's steps for safely unsuppressing profiles believed to be legitimate."
+    "summary": "Alicya explained a profile can be flagged for Subscription/Bot Protection even if it looks legitimate — e.g. rapid sign-ups across other Klaviyo accounts, or repeated form submissions from the same IP with different emails. She pointed Meher to the KB's steps for safely unsuppressing profiles believed to be legitimate."
   },
   "1786410597.717439": {
     "product_area": "Flows",
@@ -477,7 +477,7 @@
   },
   "1784269256.029929": {
     "product_area": "Flows",
-    "summary": "After correcting the account ID, Alicya found the webhook evaluation was marked WEBHOOK_FAILING_TOO_MUCH \u2014 Klaviyo retries webhook sends up to 17 times over ~24 hours before giving up. She suggested having the customer retry the webhook send and escalating if it fails again."
+    "summary": "After correcting the account ID, Alicya found the webhook evaluation was marked WEBHOOK_FAILING_TOO_MUCH — Klaviyo retries webhook sends up to 17 times over ~24 hours before giving up. She suggested having the customer retry the webhook send and escalating if it fails again."
   },
   "1783403105.371939": {
     "product_area": "Flows",
@@ -497,7 +497,7 @@
   },
   "1780552798.267769": {
     "product_area": "Flows",
-    "summary": "This was a joke/test submission via the new /splunkhelp form ('what is the meaning of life') rather than a real support question \u2014 the team responded with laughter and no genuine query was run."
+    "summary": "This was a joke/test submission via the new /splunkhelp form ('what is the meaning of life') rather than a real support question — the team responded with laughter and no genuine query was run."
   },
   "1780549422.565869": {
     "product_area": "Lists & Segments",
@@ -508,7 +508,7 @@
     "product_area": "K-Service"
   },
   "1788151655.577159": {
-    "summary": "Confirmed the localized product URL/pricing in the dynamic product feed comes from the Shopify Markets integration itself \u2014 Smart Translations is not required, since the customer's product titles were already translated separately.",
+    "summary": "Confirmed the localized product URL/pricing in the dynamic product feed comes from the Shopify Markets integration itself — Smart Translations is not required, since the customer's product titles were already translated separately.",
     "product_area": "Catalogs & Feeds"
   },
   "1788244155.884669": {
@@ -518,5 +518,9 @@
   "1788232289.890459": {
     "summary": "Alicya and Chris found the form also couldn't be cloned and had a buggy image-block deletion, pointing to a broader form-editor bug rather than a config issue, so they escalated to Backline.",
     "product_area": "Sign Up Forms"
+  },
+  "1788401232.328549": {
+    "product_area": "Templates",
+    "summary": "Alicya explained that the web view doesn't always reflect what was actually delivered, and pointed Ash to the Staffside template-rendering-artifacts tool (or having the customer forward the actual received email) to confirm which image version was truly sent; since the staff tool failed to load, the plan was to ask the customer to forward screenshots of the received email instead."
   }
 }
