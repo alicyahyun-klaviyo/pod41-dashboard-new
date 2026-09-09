@@ -522,5 +522,17 @@
   "1788401232.328549": {
     "product_area": "Templates",
     "summary": "Alicya explained that the web view doesn't always reflect what was actually delivered, and pointed Ash to the Staffside template-rendering-artifacts tool (or having the customer forward the actual received email) to confirm which image version was truly sent; since the staff tool failed to load, the plan was to ask the customer to forward screenshots of the received email instead."
+  },
+  "1788839677.082019": {
+    "summary": "Alicya found the split action shared the same action ID as another block, which didn't match any known flow bugs, so she recommended escalating to have engineering create a new bug ticket.",
+    "product_area": "Flows"
+  },
+  "1788833842.115979": {
+    "summary": "Alicya confirmed the profiles were suppressed by subscription protection (visible via Splunk calls from multiple account IDs) and, since the customer confirmed they were legitimate, advised linking the known ICM-1282 bot-protection bug ticket.",
+    "product_area": "Email Deliverability"
+  },
+  "1788831103.822359": {
+    "summary": "Alicya found no Klaviyo JS injected on the site at all and pointed to the PrestaShop troubleshooting guide; since the previous agent had already followed it without success, she advised escalating.",
+    "product_area": "Integrations"
   }
 }
