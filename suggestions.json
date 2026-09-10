@@ -534,5 +534,17 @@
   "1788831103.822359": {
     "summary": "Alicya found no Klaviyo JS injected on the site at all and pointed to the PrestaShop troubleshooting guide; since the previous agent had already followed it without success, she advised escalating.",
     "product_area": "Integrations"
+  },
+  "1788934476.288759": {
+    "summary": "Alicya identified the webhook was a non-Klaviyo (customer-owned) webhook, suggesting the skipped activity was likely due to an issue on the receiving end, and recommended checking in with the webhook owner directly.",
+    "product_area": "Flows"
+  },
+  "1788921116.009079": {
+    "summary": "Confirmed the JavaScript/integration setup was correct on the parent account, and identified that the customer's sign-up form was missing the targeting needed to limit the Singer form to the Singer site; Alicya and Chris planned to huddle to walk through the full BigCommerce multi-storefront migration (forms, flows, list structure) together.",
+    "product_area": "Sign Up Forms"
+  },
+  "1788918597.126539": {
+    "summary": "Found a 403 error in the network tab when creating a new product feed and adding a product block to the campaign, which appeared to be unexpected behaviour; Alicya recommended escalating the issue to Backline.",
+    "product_area": "Catalogs & Feeds"
   }
 }
