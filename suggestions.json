@@ -292,12 +292,12 @@
     "summary": "Ellie confirmed based on the help article that UTM-tracked links and `?link=` links should be tracked separately. She suggested testing with the `?link=` parameter format to verify, and noted it did work when tested."
   },
   "1777353168.358689": {
-    "product_area": "Integrations",
-    "summary": ""
+    "summary": "",
+    "product_area": "Integrations"
   },
   "1777354666.781209": {
-    "product_area": "Integrations",
-    "summary": ""
+    "summary": "",
+    "product_area": "Integrations"
   },
   "1777440078.325399": {
     "product_area": "Lists & Segments",
