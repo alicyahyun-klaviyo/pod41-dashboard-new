@@ -546,5 +546,9 @@
   "1788918597.126539": {
     "summary": "Found a 403 error in the network tab when creating a new product feed and adding a product block to the campaign, which appeared to be unexpected behaviour; Alicya recommended escalating the issue to Backline.",
     "product_area": "Catalogs & Feeds"
+  },
+  "1789357877.005919": {
+    "summary": "Alicya ran Chronosphere queries and found the profiles never entered the date-triggered flow at all (not just delayed), matching a known bug (FP-3599: profiles failing to enter date-triggered flow); she recommended escalating to Backline.",
+    "product_area": "Flows"
   }
 }
