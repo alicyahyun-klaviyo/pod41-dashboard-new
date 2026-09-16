@@ -154,6 +154,21 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .expand-suggestion-box .suggestion-body p { font-size: 13px; color: #1d3826; line-height: 1.6; }
   .empty-state { text-align: center; padding: 40px; color: #8e8e93; font-size: 13px; }
   .no-suggestions { color: #8e8e93; font-size: 12px; font-style: italic; }
+  .chart-section { background: #fff; border: 1px solid #e5e5ea; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .chart-section h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #8e8e93; margin-bottom: 2px; width: 100%; }
+  .donut-wrap { position: relative; width: 160px; height: 160px; flex-shrink: 0; }
+  .donut-chart { width: 160px; height: 160px; border-radius: 50%; }
+  .donut-hole { position: absolute; top: 20px; left: 20px; width: 120px; height: 120px; border-radius: 50%; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .donut-hole .donut-total { font-size: 22px; font-weight: 700; color: #1d1d1f; line-height: 1; }
+  .donut-hole .donut-total-label { font-size: 10px; color: #8e8e93; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
+  .donut-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; flex: 1; min-width: 240px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #3a3a3c; cursor: pointer; padding: 3px 6px; border-radius: 6px; transition: background 0.1s; }
+  .legend-item:hover { background: #f5f5f7; }
+  .legend-item.active { background: #f0e8f1; font-weight: 600; }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .legend-label { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { font-weight: 700; color: #1d1d1f; }
+  .legend-pct { color: #8e8e93; font-size: 11px; }
 </style>
 </head>
 <body>
@@ -171,6 +186,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <div class="stat-card orange"><div class="stat-label">Chris Yinfoo</div><div class="stat-value" id="statChris">–</div></div>
     <div class="stat-card" style="border-color:#e5e5ea"><div class="stat-label">Meher Gambhir</div><div class="stat-value" id="statMeher" style="color:#af52de">–</div></div>
   </div>
+  <div class="chart-section">
+    <h3>Questions by Product Area</h3>
+    <div class="donut-wrap">
+      <div class="donut-chart" id="donutChart"></div>
+      <div class="donut-hole"><div class="donut-total" id="donutTotal">–</div><div class="donut-total-label">Questions</div></div>
+    </div>
+    <div class="donut-legend" id="donutLegend"></div>
+  </div>
   <div class="filter-bar">
     <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="searchInput" placeholder="Search issue, product area, KA, requester…" oninput="renderTable()"></div>
     <select class="filter-select" id="requesterFilter" onchange="renderTable()"><option value="">All Requesters</option></select>
@@ -183,6 +206,30 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <script>
 const QUESTIONS=__JS_DATA__;
 let sortCol="date",sortDir="desc",expandedIdx=null;
+const CHART_COLORS=["#4A154B","#007aff","#34c759","#ff9500","#af52de","#ff3b30","#5ac8fa","#ffcc00","#8e8e93","#30b0c7","#ff2d55","#5856d6"];
+function getAreaCounts(){const counts={};QUESTIONS.forEach(q=>{counts[q.area]=(counts[q.area]||0)+1;});return Object.entries(counts).sort((a,b)=>b[1]-a[1]);}
+function filterByArea(area){const sel=document.getElementById("areaFilter");sel.value=sel.value===area?"":area;renderTable();}
+function renderChart(){
+  const counts=getAreaCounts();
+  const total=QUESTIONS.length;
+  const activeArea=document.getElementById("areaFilter")?document.getElementById("areaFilter").value:"";
+  let cumulative=0;
+  const gradientParts=counts.map(([area,count],i)=>{
+    const pct=total?count/total*100:0;
+    const start=cumulative;
+    cumulative+=pct;
+    const color=CHART_COLORS[i%CHART_COLORS.length];
+    return `${color} ${start}% ${cumulative}%`;
+  });
+  document.getElementById("donutChart").style.background=gradientParts.length?`conic-gradient(${gradientParts.join(",")})`:"#e5e5ea";
+  document.getElementById("donutTotal").textContent=total;
+  document.getElementById("donutLegend").innerHTML=counts.map(([area,count],i)=>{
+    const color=CHART_COLORS[i%CHART_COLORS.length];
+    const pct=total?((count/total)*100).toFixed(1):"0.0";
+    const isActive=activeArea===area;
+    return `<div class="legend-item${isActive?" active":""}" onclick="filterByArea('${area.replace(/'/g,"\\'")}')"><span class="legend-swatch" style="background:${color}"></span><span class="legend-label">${esc(area)}</span><span class="legend-count">${count}</span><span class="legend-pct">${pct}%</span></div>`;
+  }).join("");
+}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 function fmtDate(s){const d=new Date(s+"T00:00:00");return d.toLocaleDateString("en-AU",{day:"2-digit",month:"short",year:"numeric"});}
 function buildFilters(){
@@ -221,6 +268,7 @@ function renderSuggestions(s){
   return`<p>${esc(s)}</p>`;
 }
 function renderTable(){
+  renderChart();
   const filtered=sortRows(getFiltered());
   document.getElementById("filterCount").textContent=`Showing ${filtered.length} of ${QUESTIONS.length}`;
   const c=document.getElementById("tableContainer");
@@ -240,7 +288,7 @@ function renderTable(){
   c.innerHTML=html;
 }
 function toggleExpand(idx){expandedIdx=expandedIdx===idx?null:idx;renderTable();}
-buildFilters();updateStats();renderTable();
+buildFilters();updateStats();renderChart();renderTable();
 </script>
 </body>
 </html>"""
