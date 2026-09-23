@@ -554,5 +554,13 @@
   "1789948155.143509": {
     "summary": "Chris identified two similar Linear bugs about flow emails skipped due to 'Unable to Send Email'; the team concluded the closest match is FP-3896 (Unable to Send Email due to UNKNOWN_SEND_EXCEPTION).",
     "product_area": "Flows"
+  },
+  "1790054378.368539": {
+    "summary": "Chris found the custom property was added via an API call that touched only profile attributes with no visible integration in the dev logs, likely from an automation using a private API key; Alicya recommended checking with the SE team to trace where it originated.",
+    "product_area": "Lists & Segments"
+  },
+  "1789951901.432309": {
+    "summary": "Alicya explained this is a known issue where Shopify checkout URLs take about 15 minutes to sync to Klaviyo, so testing immediately after the event shows the homepage instead of the checkout page; she pointed Chris to the internal KB troubleshooting guide for checkout URL redirect issues.",
+    "product_area": "Integrations"
   }
 }
