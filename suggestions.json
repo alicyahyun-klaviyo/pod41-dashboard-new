@@ -562,5 +562,9 @@
   "1789951901.432309": {
     "summary": "Alicya explained this is a known issue where Shopify checkout URLs take about 15 minutes to sync to Klaviyo, so testing immediately after the event shows the homepage instead of the checkout page; she pointed Chris to the internal KB troubleshooting guide for checkout URL redirect issues.",
     "product_area": "Integrations"
+  },
+  "1790143859.385879": {
+    "summary": "Alicya explained that Price Drop flows can only source pricing from one catalog and don't pull from the live website; for SFCC, catalog-triggered flows need version 25.4.0+ so a catalog identifier (external id + store id) can distinguish items sharing the same ID across catalogs. She found the correct price was actually set on the variant product rather than the parent product, and suggested asking the customer what that variant product is.",
+    "product_area": "Catalogs & Feeds"
   }
 }
