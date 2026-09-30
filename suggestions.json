@@ -293,7 +293,7 @@
   },
   "1777353168.358689": {
     "summary": "",
-    "product_area": "Integrations"
+    "product_area": "Accounts"
   },
   "1777354666.781209": {
     "summary": "",
@@ -573,6 +573,14 @@
   },
   "1790227148.605089": {
     "summary": "Discussed in the office - turning off mobile optimization on the template resolved the rendering issue better than keeping it enabled.",
+    "product_area": "Campaigns"
+  },
+  "1790664529.609219": {
+    "summary": "The team traced it to Klaviyo's 512-value display limit for property dropdowns (linked to bug PROPLAT-491) — the Shopify tag values existed on the profile but wouldn't populate in the segment/flow filter dropdown; typing the exact tag text (contains) worked for the segment condition, though the flow trigger profile filter still didn't show it as an option.",
+    "product_area": "Lists & Segments"
+  },
+  "1787624217.575029": {
+    "summary": "Ellie checked but found no issue on her end (third-party number); the SMS testing request was marked resolved with no further action needed.",
     "product_area": "Campaigns"
   }
 }
