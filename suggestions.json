@@ -586,5 +586,9 @@
   "1790739968.317619": {
     "summary": "The team suspected the issue stemmed from the customer using a customized Wix checkout rather than Wix's default checkout, since the KB's Splunk check only covers the default flow; advised confirming with the customer whether they use a customized checkout before escalating to SE, and noted the default checkout may be the only supported option.",
     "product_area": "Integrations"
+  },
+  "1791260210.437339": {
+    "summary": "Thread found no clear cause: the customer's 9pm quiet-hours setting appeared to be obeyed alongside the default 8pm smart-sending window, which still doesn't explain why 8:30pm and 8:57pm sends were skipped. Quiet hours were updated on 16 Sept, and the case was escalated.",
+    "product_area": "Campaigns"
   }
 }
