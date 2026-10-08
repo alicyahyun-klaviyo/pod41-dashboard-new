@@ -590,5 +590,9 @@
   "1791260210.437339": {
     "summary": "Thread found no clear cause: the customer's 9pm quiet-hours setting appeared to be obeyed alongside the default 8pm smart-sending window, which still doesn't explain why 8:30pm and 8:57pm sends were skipped. Quiet hours were updated on 16 Sept, and the case was escalated.",
     "product_area": "Campaigns"
+  },
+  "1791425147.278679": {
+    "summary": "Advised escalating since manually updating the stale theme ID in Staffside isn't documented and should be automatic; also comment on the similar Linear (IEC-1036). A new Linear, IEC-1543, was created for the same Shopify app embed issue.",
+    "product_area": "Integrations"
   }
 }
