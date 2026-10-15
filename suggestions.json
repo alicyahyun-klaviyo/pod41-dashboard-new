@@ -598,5 +598,9 @@
   "1791520458.320949": {
     "summary": "Alicya and Ash agreed this likely needs escalation to SE since the KB doesn't cover it; Alicya also suggested (from Glean, unverified) a Salesforce Formula → Text field such as BLANKVALUE(Email__c, Owner_Email__c) so one mapped field works whether the email is in Email__c or Owner_Email__c.",
     "product_area": "Integrations"
+  },
+  "1792023801.291629": {
+    "summary": "Suggested escalating the ticket, and pointed to a recently closed Linear bug (IEC-1123, Shopify Tags Not Syncing to Klaviyo) that could be relevant.",
+    "product_area": "Flows"
   }
 }
