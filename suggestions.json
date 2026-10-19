@@ -602,5 +602,9 @@
   "1792023801.291629": {
     "summary": "Suggested escalating the ticket, and pointed to a recently closed Linear bug (IEC-1123, Shopify Tags Not Syncing to Klaviyo) that could be relevant.",
     "product_area": "Flows"
+  },
+  "1792381699.451999": {
+    "summary": "Alicya confirmed it looks like a bug and advised escalating the Back in Stock form font issue.",
+    "product_area": "Sign Up Forms"
   }
 }
